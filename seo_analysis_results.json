@@ -1,0 +1,393 @@
+[
+  {
+    "name": "Home",
+    "route": "/",
+    "filePath": "e:\\New folder\\Tours-ANd-travels-agency-website\\client\\src\\pages\\Home.tsx",
+    "wordCount": 459,
+    "headings": {
+      "h1": [
+        "Discover Kashi — Beyond Tourism"
+      ],
+      "h2": [
+        "Founded in the Lanes of Kashi",
+        "Our Core Values",
+        "Our Services",
+        "Latest Stories",
+        "Meet Our Founder",
+        "Frequently Asked Questions",
+        "Plan Your Journey With Us"
+      ],
+      "h3": [
+        "...",
+        "...",
+        "...",
+        "A Story Born from the Ghats of Ganga",
+        "Send an Inquiry"
+      ],
+      "h4": []
+    },
+    "internalLinks": 5,
+    "externalLinks": 2,
+    "internalDestinations": [
+      "/services",
+      "/best-tours-and-travel-agency-in-varanasi",
+      "/blog"
+    ],
+    "externalDestinations": [
+      "https://wa.me/919580417547"
+    ],
+    "totalImages": 3,
+    "imagesWithAlt": 3,
+    "imagesWithoutAlt": 0,
+    "meta": {
+      "title": "Varanasi Tour Packages & Local Travel Operator",
+      "description": "Experience Varanasi authentically with Soil n Soul Travels. Verified stays, Ganga Aarti, cultural tours and more — led by Anchal Pandey, a native of Banaras.",
+      "keywords": "Varanasi Tour Packages, Varanasi Travel Operator, Kashi Tours, SoilnSoul",
+      "canonical": "/",
+      "structuredDataExists": true
+    }
+  },
+  {
+    "name": "Services",
+    "route": "/services",
+    "filePath": "e:\\New folder\\Tours-ANd-travels-agency-website\\client\\src\\pages\\Services.tsx",
+    "wordCount": 82,
+    "headings": {
+      "h1": [
+        "Our Services"
+      ],
+      "h2": [
+        "..."
+      ],
+      "h3": [
+        "Can&apos;t Find What You Need?"
+      ],
+      "h4": []
+    },
+    "internalLinks": 1,
+    "externalLinks": 0,
+    "internalDestinations": [
+      "/contact"
+    ],
+    "externalDestinations": [],
+    "totalImages": 1,
+    "imagesWithAlt": 1,
+    "imagesWithoutAlt": 0,
+    "meta": {
+      "title": "Our Services — Varanasi Travel, Stays & Rituals",
+      "description": "Trusted, verified Varanasi travel services: airport pickups, heritage stays, Ganga Aarti pooja bookings, city tours and custom itineraries. Book with Soil n Soul Travels.",
+      "keywords": "",
+      "canonical": "/services",
+      "structuredDataExists": false
+    }
+  },
+  {
+    "name": "Service Detail",
+    "route": "/services/:slug",
+    "filePath": "e:\\New folder\\Tours-ANd-travels-agency-website\\client\\src\\pages\\ServiceDetail.tsx",
+    "wordCount": 281,
+    "headings": {
+      "h1": [
+        "..."
+      ],
+      "h2": [
+        "About This Service",
+        "What's Included",
+        "Our Featured Stays",
+        "Frequently Asked Questions",
+        "Other Services"
+      ],
+      "h3": [
+        "...",
+        "Book / Inquire"
+      ],
+      "h4": []
+    },
+    "internalLinks": 3,
+    "externalLinks": 1,
+    "internalDestinations": [
+      "/",
+      "/services",
+      "tel:+919580417547"
+    ],
+    "externalDestinations": [
+      "https://wa.me/919580417547"
+    ],
+    "totalImages": 1,
+    "imagesWithAlt": 1,
+    "imagesWithoutAlt": 0,
+    "meta": {
+      "title": "",
+      "description": "",
+      "keywords": "",
+      "canonical": "",
+      "structuredDataExists": true
+    }
+  },
+  {
+    "name": "Blog",
+    "route": "/blog",
+    "filePath": "e:\\New folder\\Tours-ANd-travels-agency-website\\client\\src\\pages\\Blog.tsx",
+    "wordCount": 130,
+    "headings": {
+      "h1": [
+        "Stories from the Heart of India"
+      ],
+      "h2": [
+        "...",
+        "...",
+        "Never Miss a Dispatch"
+      ],
+      "h3": [
+        "..."
+      ],
+      "h4": []
+    },
+    "internalLinks": 0,
+    "externalLinks": 0,
+    "internalDestinations": [],
+    "externalDestinations": [],
+    "totalImages": 2,
+    "imagesWithAlt": 2,
+    "imagesWithoutAlt": 0,
+    "meta": {
+      "title": "Travel Journal — Stories from Varanasi",
+      "description": "Curated essays, cultural dispatches, and inner reflections from the ancient streets of Varanasi by Soil n Soul Travels.",
+      "keywords": "",
+      "canonical": "/blog",
+      "structuredDataExists": false
+    }
+  },
+  {
+    "name": "Blog Post",
+    "route": "/blog/:slug",
+    "filePath": "e:\\New folder\\Tours-ANd-travels-agency-website\\client\\src\\pages\\BlogPost.tsx",
+    "wordCount": 183,
+    "headings": {
+      "h1": [
+        "Post Not Found",
+        "..."
+      ],
+      "h2": [],
+      "h3": [
+        "Continue Reading"
+      ],
+      "h4": [
+        "..."
+      ]
+    },
+    "internalLinks": 3,
+    "externalLinks": 1,
+    "internalDestinations": [
+      "/blog",
+      "/"
+    ],
+    "externalDestinations": [
+      "https://wa.me/919580417547"
+    ],
+    "totalImages": 1,
+    "imagesWithAlt": 1,
+    "imagesWithoutAlt": 0,
+    "meta": {
+      "title": "",
+      "description": "",
+      "keywords": "",
+      "canonical": "",
+      "structuredDataExists": false
+    }
+  },
+  {
+    "name": "About",
+    "route": "/about (redirects to /#about in client, active /about in Next.js)",
+    "filePath": "e:\\New folder\\Tours-ANd-travels-agency-website\\client\\src\\pages\\About.tsx",
+    "wordCount": 194,
+    "headings": {
+      "h1": [
+        "Born from the Heart of Kashi"
+      ],
+      "h2": [
+        "Founded in the lanes of Kashi",
+        "Core Values",
+        "Meet Our Founder",
+        "Join Our Lineage of Travelers"
+      ],
+      "h3": [
+        "...",
+        "A Story Born from the Ghats of Ganga"
+      ],
+      "h4": []
+    },
+    "internalLinks": 1,
+    "externalLinks": 1,
+    "internalDestinations": [
+      "/contact"
+    ],
+    "externalDestinations": [
+      "https://wa.me/919580417547"
+    ],
+    "totalImages": 1,
+    "imagesWithAlt": 1,
+    "imagesWithoutAlt": 0,
+    "meta": {
+      "title": "",
+      "description": "",
+      "keywords": "",
+      "canonical": "",
+      "structuredDataExists": false
+    }
+  },
+  {
+    "name": "Contact",
+    "route": "/contact",
+    "filePath": "e:\\New folder\\Tours-ANd-travels-agency-website\\client\\src\\pages\\Contact.tsx",
+    "wordCount": 130,
+    "headings": {
+      "h1": [
+        "Begin Your Sacred Journey"
+      ],
+      "h2": [
+        "Send an Inquiry",
+        "Frequently Asked Questions"
+      ],
+      "h3": [
+        "Contact Details"
+      ],
+      "h4": [
+        "Follow Our Journey",
+        "..."
+      ]
+    },
+    "internalLinks": 1,
+    "externalLinks": 0,
+    "internalDestinations": [
+      "#"
+    ],
+    "externalDestinations": [],
+    "totalImages": 0,
+    "imagesWithAlt": 0,
+    "imagesWithoutAlt": 0,
+    "meta": {
+      "title": "Contact Us — Plan Your Varanasi Journey",
+      "description": "Get in touch with Soil n Soul Travels to plan your perfect Varanasi experience. WhatsApp, email, or fill our inquiry form. We reply within the hour.",
+      "keywords": "",
+      "canonical": "/contact",
+      "structuredDataExists": false
+    }
+  },
+  {
+    "name": "SEO Special Landing (Best Tours)",
+    "route": "/best-tours-and-travel-agency-in-varanasi",
+    "filePath": "e:\\New folder\\Tours-ANd-travels-agency-website\\client\\src\\pages\\BestToursVaranasi.tsx",
+    "wordCount": 2612,
+    "headings": {
+      "h1": [
+        "Best Tours & Travel Agency in Varanasi – Soil N Soul Travels"
+      ],
+      "h2": [
+        "Who We Are — Varanasi's Most Trusted Tour & Travel Agency",
+        "Our Tour & Travel Services in Varanasi — Everything You Need, One Agency",
+        "Why Soil N Soul Travels Is the Best Tour & Travel Agency in Varanasi",
+        "Most Booked Varanasi Tour Packages in 2026",
+        "What Travelers Say About Soil N Soul Travels — Varanasi's Top Rated Agency",
+        "We Serve Travelers Across Varanasi & the Entire Kashi Pilgrimage Belt",
+        "Best Time to Visit Varanasi — A Month-by-Month Guide",
+        "Frequently Asked Questions — Varanasi Tour & Travel Agency",
+        "Book Your Varanasi Tour Today — Trusted, Local, Unforgettable"
+      ],
+      "h3": [
+        "verified Quick Facts",
+        "link Explore Our Services",
+        "...",
+        "Deep Local Knowledge — We're Not Tourists Here",
+        "Transparent Pricing — No Hidden Charges, Ever",
+        "Customized Itineraries for Every Traveler Type",
+        "24/7 On-Ground Support in Varanasi",
+        "English + Hindi + Regional Language Guides",
+        "4.9★ Rating Across Google, TripAdvisor & Travel Portals",
+        "...",
+        "Looking for a Custom Varanasi Tour Package?",
+        "water Varanasi Ghats & Neighborhoods Covered",
+        "account_balance Temples & Monuments Covered",
+        "route Outstation Circuits from Varanasi",
+        "commute Transport Hubs We Cover",
+        "October to March",
+        "April to June",
+        "July to September",
+        "..."
+      ],
+      "h4": []
+    },
+    "internalLinks": 16,
+    "externalLinks": 3,
+    "internalDestinations": [
+      "/services/city-tour",
+      "/services/pooja-booking",
+      "/services/travel",
+      "/services/stay",
+      "/services/event",
+      "/blog",
+      "/contact",
+      "/",
+      "#packages",
+      "tel:+919580417547",
+      "https://www.soilnsoultravels.com"
+    ],
+    "externalDestinations": [
+      "https://wa.me/919580417547?text=Hi%2C%20I%20want%20to%20book%20a%20Varanasi%20tour%20package",
+      "https://wa.me/919580417547?text=Hi%2C%20I%20need%20a%20custom%20Varanasi%20tour%20package",
+      "https://wa.me/919580417547?text=Hi%2C%20I%20want%20a%20custom%20Varanasi%20tour%20package"
+    ],
+    "totalImages": 1,
+    "imagesWithAlt": 1,
+    "imagesWithoutAlt": 0,
+    "meta": {
+      "title": "Best Tours & Travel Agency in Varanasi | Soil N Soul",
+      "description": "Book trusted tours & travel packages in Varanasi with Soil N Soul Travels. Ganga Aarti, pooja booking, city tours, car rental & spiritual packages from ₹999.",
+      "keywords": "best tours and travel agency in varanasi, tour and travel agency in varanasi, travel agent in varanasi, best travel agency in varanasi, varanasi travel agency, varanasi tour packages, tours and travels varanasi, varanasi city tour packages 2026, spiritual tour packages varanasi, luxury tour packages varanasi, varanasi pooja booking service, ganga aarti tour varanasi, varanasi sightseeing packages, car rental service in varanasi, hotel booking varanasi near ghats",
+      "canonical": "/best-tours-and-travel-agency-in-varanasi",
+      "structuredDataExists": true
+    }
+  },
+  {
+    "name": "SEO Local Landing Guide",
+    "route": "/travel/:slug",
+    "filePath": "e:\\New folder\\Tours-ANd-travels-agency-website\\client\\src\\pages\\SeoLanding.tsx",
+    "wordCount": 240,
+    "headings": {
+      "h1": [
+        "Page not found",
+        "{page.heroHeading.split(' — ').length > 1 ? ( <> ... — ... ) : ( <> ... ... )}"
+      ],
+      "h2": [
+        "Why Trust Soil n Soul for Your Varanasi Journey?",
+        "Everything You Need to Know",
+        "Frequently Asked Questions",
+        "Ready to Experience Varanasi?"
+      ],
+      "h3": [
+        "..."
+      ],
+      "h4": []
+    },
+    "internalLinks": 3,
+    "externalLinks": 2,
+    "internalDestinations": [
+      "/",
+      "/services",
+      "/contact"
+    ],
+    "externalDestinations": [
+      "https://wa.me/919580417547"
+    ],
+    "totalImages": 0,
+    "imagesWithAlt": 0,
+    "imagesWithoutAlt": 0,
+    "meta": {
+      "title": "",
+      "description": "",
+      "keywords": "",
+      "canonical": "",
+      "structuredDataExists": true
+    }
+  }
+]

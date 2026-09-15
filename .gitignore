@@ -1,0 +1,16 @@
+﻿node_modules/
+.next/
+dist/
+.vercel/
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.log
+*.tsbuildinfo
+.DS_Store
+frontend/*-check.png
+frontend/*-full.png
+frontend/*-final.png
+frontend/narrow-mobile.png
+frontend/journey-mobile.png

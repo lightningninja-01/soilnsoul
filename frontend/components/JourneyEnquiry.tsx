@@ -1,0 +1,160 @@
+"use client";
+import { useState } from "react";
+import { whatsapp } from "@/data/journeys";
+export default function JourneyEnquiry({
+  journey = "",
+  duration = "",
+}: {
+  journey?: string;
+  duration?: string;
+}) {
+  const [ready, setReady] = useState("");
+  return (
+    <section id="contact" className="sn-section sn-contact">
+      <div className="sn-wrap">
+        <p className="sn-eyebrow">Design My Journey</p>
+        <h2>
+          Every meaningful journey
+          <br />
+          begins with <em>a conversation.</em>
+        </h2>
+        <div className="sn-contact-grid">
+          <div>
+            <p>
+              Tell us what draws you to Kashi. We’ll take care of the details
+              that make it yours.
+            </p>
+            <div className="sn-contact-details">
+              <a href="tel:+919580417547">+91 95804 17547</a>
+              <a href="mailto:hello@soilnsoul.in">hello@soilnsoul.in</a>
+              <span>Varanasi, Uttar Pradesh, India</span>
+            </div>
+            <form
+              className="sn-form"
+              onChange={() => setReady("")}
+              onSubmit={(e) => {
+                e.preventDefault();
+                const data = new FormData(e.currentTarget);
+                const message = `Hi Soil n Soul,\n${journey ? `I'm interested in ${journey}.` : "I would love to design my journey to Kashi."}\nName: ${data.get("name")}\nWhatsApp / Email: ${data.get("contact")}\nDate: ${data.get("dates") || "Flexible"}\nGuests: ${data.get("guests")}${duration ? `\nDuration: ${duration}` : ""}\nInterests: ${data.getAll("interests").join(", ") || "Open to suggestions"}\nMessage: ${data.get("message") || "I would love to know more."}`;
+                setReady(whatsapp(message));
+              }}
+            >
+              <label>
+                Full Name
+                <input
+                  name="name"
+                  autoComplete="name"
+                  required
+                  maxLength={100}
+                />
+              </label>
+              <label>
+                WhatsApp Number / Email
+                <input
+                  name="contact"
+                  autoComplete="email"
+                  required
+                  maxLength={150}
+                />
+              </label>
+              <label>
+                Preferred Dates
+                <input
+                  name="dates"
+                  placeholder="e.g. 12–14 October, or flexible"
+                  maxLength={100}
+                />
+              </label>
+              <label>
+                Number of Guests
+                <input
+                  name="guests"
+                  type="number"
+                  min="1"
+                  max="100"
+                  defaultValue="2"
+                  required
+                />
+              </label>
+              <fieldset>
+                <legend>Interests</legend>
+                <div className="sn-interest-options">
+                  {[
+                    "Sacred Kashi",
+                    "Living Banaras",
+                    "Food",
+                    "Photography",
+                    "Celebrations",
+                    "Slow travel",
+                  ].map((i) => (
+                    <label key={i}>
+                      <input type="checkbox" name="interests" value={i} />
+                      {i}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <label className="sn-full">
+                Message
+                <textarea
+                  name="message"
+                  rows={3}
+                  placeholder="A place you dream of. A moment you want to feel."
+                  maxLength={2000}
+                />
+              </label>
+              <button className="sn-button" type="submit">
+                Design My Journey ↗
+              </button>
+              <p className="sn-form-note">
+                We’ll prepare your enquiry for WhatsApp. You review and send it.
+              </p>
+              {ready && (
+                <div className="sn-form-ready" role="status">
+                  <p>Your enquiry is ready.</p>
+                  <a
+                    className="sn-button"
+                    href={ready}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Continue on WhatsApp ↗
+                  </a>
+                </div>
+              )}
+            </form>
+            <a
+              className="sn-text-link"
+              href={whatsapp(
+                `Hi Soil n Soul, ${journey ? `I'm interested in ${journey}. Duration: ${duration}. Dates and guests to be discussed.` : "I would love to plan a journey to Kashi."}`,
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Enquire on WhatsApp ↗
+            </a>
+          </div>
+          <div className="sn-map">
+            <iframe
+              title="Map of Varanasi, Uttar Pradesh, India"
+              src="https://maps.google.com/maps?q=Varanasi%2C%20Uttar%20Pradesh%2C%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <div>
+              <p className="sn-eyebrow">Our home. Your beginning.</p>
+              <h3>Varanasi, India</h3>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Varanasi%2C+Uttar+Pradesh%2C+India"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Explore the map ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-display: "Manrope", sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  --color-primary: #e65000;
+  --color-primary-hover: rgba(230, 80, 0, 0.9);
+  --color-background-dark: #1A120B;
+  --color-background-warm: #23160f;
+  --color-background-light: #f8f6f5;
+  --color-gold: #D4AF37;
+  --color-surface: rgba(255, 255, 255, 0.05);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Prevent horizontal overflow on mobile */
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: "Manrope", sans-serif;
+    background-color: #1A120B;
+    color: #f1f5f9;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    /* Android tap color reset */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent iOS input zoom (keep font-size >= 16px) */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  @media (min-width: 640px) {
+
+    input,
+    select,
+    textarea {
+      font-size: 14px;
+    }
+  }
+
+  /* Better touch targets for Android */
+  button,
+  a {
+    touch-action: manipulation;
+    cursor: pointer;
+  }
+
+  /* Use small viewport height for hero sections (avoids Android browser chrome overlap) */
+  .hero-full-height {
+    min-height: 100svh;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hero fade-slide animation */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grain overlay */
+.grain-overlay {
+  background-image: url(https://www.transparenttextures.com/patterns/stardust.png);
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(to right, rgba(26, 18, 11, 0.9) 0%, rgba(26, 18, 11, 0.4) 50%, rgba(26, 18, 11, 0.1) 100%);
+}
+
+/* Saffron glow card */
+.saffron-glow {
+  box-shadow: 0 0 40px -10px rgba(230, 80, 0, 0.2);
+}
+
+/* Nav link underline */
+.nav-link-hover::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #D4AF37;
+  transition: width 0.3s;
+}
+
+.nav-link-hover:hover::after {
+  width: 100%;
+}
+
+/* Glass nav effect */
+.glass-nav {
+  background: rgba(26, 18, 11, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Drop cap for blog */
+.drop-cap::first-letter {
+  float: left;
+  font-size: 4.5rem;
+  line-height: 1;
+  padding-right: 0.75rem;
+  font-family: 'Playfair Display', serif;
+  color: #e65000;
+  font-weight: 700;
+}
+
+/* Sticky sidebar */
+.sticky-share {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+/* Itinerary line */
+.itinerary-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, #e65000, transparent);
+}
+
+/* Line clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* No scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A120B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(230, 80, 0, 0.5);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e65000;
+}
+
+/* Selection */
+::selection {
+  background: rgba(230, 80, 0, 0.3);
+  color: #e65000;
+}
+
+/* Reading progress — width driven by inline style in BlogPost.tsx */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #e65000;
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* ── Blog body content (Quill output) ─────────────────────────────────────── */
+.blog-body {
+  font-family: "Manrope", sans-serif;
+  color: #cbd5e1;
+  font-size: 16px;
+  line-height: 1.85;
+  /* Prevent ANY child from overflowing the container */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.blog-body h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 2rem 0 0.75rem;
+  line-height: 1.25;
+}
+
+.blog-body h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 1.75rem 0 0.65rem;
+  line-height: 1.3;
+}
+
+.blog-body h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.blog-body h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 1.2rem 0 0.4rem;
+}
+
+.blog-body p {
+  margin-bottom: 1.3rem;
+}
+
+.blog-body a {
+  color: #818cf8;
+  text-decoration: underline;
+  word-break: break-all;
+  /* stop long URLs from overflowing */
+}
+
+.blog-body strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.blog-body em {
+  color: #e2e8f0;
+}
+
+.blog-body img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.75rem auto;
+  display: block;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+  object-fit: cover;
+}
+
+/* Constrain iframes and video embeds */
+.blog-body iframe,
+.blog-body video {
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 1.5rem 0;
+  display: block;
+}
+
+.blog-body blockquote {
+  border-left: 4px solid #6366f1;
+  background: rgba(99, 102, 241, 0.07);
+  padding: 14px 20px;
+  border-radius: 0 10px 10px 0;
+  margin: 1.5rem 0;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.blog-body pre {
+  background: #1e1e2e;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  /* scroll code blocks, don't overflow page */
+  max-width: 100%;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: pre-wrap;
+  /* wrap long lines */
+  word-break: break-all;
+}
+
+.blog-body pre code,
+.blog-body code {
+  font-family: 'Courier New', Consolas, monospace;
+  font-size: 13px;
+  color: #a5f3fc;
+}
+
+.blog-body ul {
+  list-style: disc;
+  padding-left: 1.75rem;
+  margin-bottom: 1.3rem;
+}
+
+.blog-body ol {
+  list-style: decimal;
+  padding-left: 1.75rem;
+  margin-bottom: 1.3rem;
+}
+
+.blog-body li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+.blog-body hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+
+.blog-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 14px;
+}
+
+.blog-body th {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-body td {
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.blog-body tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03);
+}
