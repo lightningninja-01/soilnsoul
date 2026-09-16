@@ -145,21 +145,6 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
             Scroll to discover ↓
           </a>
         </div>
-        <button
-          type="button"
-          onClick={handleManualTrigger}
-          className="sn-concierge"
-          aria-label="Let's Talk"
-        >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e65000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span>LET'S TALK</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ opacity: 0.5 }}>
-            <path d="M5 12h14"></path>
-            <path d="M12 5l7 7-7 7"></path>
-          </svg>
-        </button>
       </section>
 
 
@@ -286,6 +271,21 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
       </section>
       <SoulJournal blogs={blogs} />
       <JourneyEnquiry />
+      <button
+        type="button"
+        onClick={handleManualTrigger}
+        className="sn-concierge"
+        aria-label="Let's Talk"
+      >
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e65000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>LET'S TALK</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ opacity: 0.5 }}>
+          <path d="M5 12h14"></path>
+          <path d="M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
       {showPopup && <LeadCaptureModal onClose={() => setShowPopup(false)} />}
     </div>
   );
