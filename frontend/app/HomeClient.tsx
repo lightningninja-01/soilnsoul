@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 import type { BlogPost } from "@/lib/api";
 import LeadCaptureModal from "@/components/LeadCaptureModal";
