@@ -28,6 +28,8 @@ export default function ExperienceSelector() {
   const [paused, setPaused] = useState(false);
   const pauseTimeout = useRef<NodeJS.Timeout | null>(null);
 
+  const tablistRef = useRef<HTMLDivElement>(null);
+
   const interact = () => {
     setPaused(true);
     if (pauseTimeout.current) clearTimeout(pauseTimeout.current);
@@ -36,13 +38,21 @@ export default function ExperienceSelector() {
 
   const select = (index: number) => {
     setActive(index);
-    tabs.current[index]?.scrollIntoView({
-      block: "nearest",
-      inline: "nearest",
-      behavior: "smooth",
-    });
+    const tablist = tablistRef.current;
+    const tab = tabs.current[index];
+    if (tablist && tab) {
+      // Calculate position purely horizontally so the page doesn't jump vertically
+      const tabLeft = tab.offsetLeft;
+      const tabWidth = tab.offsetWidth;
+      const containerWidth = tablist.clientWidth;
+      const scrollPos = tabLeft - (containerWidth / 2) + (tabWidth / 2);
+      
+      tablist.scrollTo({
+        left: scrollPos,
+        behavior: "smooth"
+      });
+    }
   };
-
 
   useEffect(() => {
     if (paused) return;
@@ -63,6 +73,7 @@ export default function ExperienceSelector() {
       <div
         className="sn-experience-tabs"
         role="tablist"
+        ref={tablistRef}
         aria-label="Signature Experiences"
         onKeyDown={(e) => {
           let next = active;
