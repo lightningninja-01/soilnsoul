@@ -1,7 +1,45 @@
-﻿import Image from "next/image";
+"use client";
+import Image from "next/image";
 import JourneyCard from "./JourneyCard";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { experiences, journeys, founderStory, values } from "@/data/journeys";
+
+function useAutoAdvance() {
+  const railRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+  const pauseTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const interact = () => {
+    setPaused(true);
+    if (pauseTimeout.current) clearTimeout(pauseTimeout.current);
+    pauseTimeout.current = setTimeout(() => setPaused(false), 4000);
+  };
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      const rail = railRef.current;
+      if (!rail || document.hidden) return;
+      
+      const maxScroll = rail.scrollWidth - rail.clientWidth;
+      if (maxScroll <= 0) return;
+
+      let nextScroll = rail.scrollLeft + (rail.clientWidth * 0.8);
+      if (rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 10) {
+        nextScroll = 0;
+      }
+      rail.scrollTo({
+        left: nextScroll,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      });
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [paused]);
+
+  return { railRef, interact };
+}
+
 export function SectionHeading({
   label,
   title,
@@ -21,9 +59,16 @@ export function SectionHeading({
     </div>
   );
 }
+
 export function ExperienceGrid() {
+  const { railRef, interact } = useAutoAdvance();
   return (
-    <div className="sn-experiences">
+    <div 
+      className="sn-experiences" 
+      ref={railRef}
+      onPointerDown={interact}
+      onScrollCapture={interact}
+    >
       {experiences.map((e, i) => (
         <Link
           className="sn-experience"
@@ -41,25 +86,36 @@ export function ExperienceGrid() {
           <div className="sn-experience-copy">
             <h3>{e.name}</h3>
             <p>{e.description}</p>
-            <span className="sn-text-link">Explore this experience ↗</span>
+            <span className="sn-text-link">Explore this experience →</span>
           </div>
         </Link>
       ))}
     </div>
   );
 }
+
 export function JourneyGrid() {
   const featured = journeys.filter((j) => j.category === "Signature Journey");
   const local = journeys.filter((j) => j.category === "Explore Kashi");
+  
+  const { railRef: featuredRef, interact: featuredInteract } = useAutoAdvance();
+  const { railRef: localRef, interact: localInteract } = useAutoAdvance();
+
   return (
     <>
       <div className="sn-browse-heading">
         <h3>Featured Journeys</h3>
         <Link href="/journeys" className="sn-text-link">
-          View all journeys →
+          View all journeys  
         </Link>
       </div>
-      <div className="sn-journey-rail" aria-label="Featured Journeys">
+      <div 
+        className="sn-journey-rail" 
+        aria-label="Featured Journeys"
+        ref={featuredRef}
+        onPointerDown={featuredInteract}
+        onScrollCapture={featuredInteract}
+      >
         {featured.map((j) => (
           <JourneyCard key={j.slug} journey={j} />
         ))}
@@ -68,7 +124,13 @@ export function JourneyGrid() {
         <h3>Explore Kashi</h3>
         <p>Find your own way into the city.</p>
       </div>
-      <div className="sn-journey-rail" aria-label="Explore Kashi">
+      <div 
+        className="sn-journey-rail" 
+        aria-label="Explore Kashi"
+        ref={localRef}
+        onPointerDown={localInteract}
+        onScrollCapture={localInteract}
+      >
         {local.map((j) => (
           <JourneyCard key={j.slug} journey={j} />
         ))}

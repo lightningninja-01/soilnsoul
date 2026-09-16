@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useRef, useState } from "react";
 import { whatsapp } from "@/data/journeys";
 export default function JourneyEnquiry({
@@ -45,7 +45,7 @@ export default function JourneyEnquiry({
             </p>
             <div className="sn-contact-details">
               <a href="tel:+919580417547">+91 95804 17547</a>
-              <a href="mailto:hello@soilnsoul.in">hello@soilnsoul.in</a>
+              <a href="mailto:info@soilnsoultravels">info@soilnsoultravels</a>
               <span>Varanasi, Uttar Pradesh, India</span>
             </div>
             <form

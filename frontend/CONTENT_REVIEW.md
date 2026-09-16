@@ -1,26 +1,31 @@
-# V1 content and asset review
+﻿# Soil n Soul refinement — content review
 
-## Client confirmation needed
+## Preserved
 
-- Founder chronology: the previous homepage said “In 2018, Kavita Shastri began leading small, intimate groups ... in 2020, Soil n Soul was formally born.” The About page names Anchal Pandey as founder. The conflict is preserved in `data/journeys.ts` comments. No replacement chronology is published. Existing Anchal Pandey story is retained.
-- Rare Access descriptions come from the supplied brief. Confirm partner availability and claims such as five-generation recipes before launch.
-- Journey timelines are proposed editorial concepts, not confirmed departures or inventory. Dates are chosen by the traveller; no example October dates are advertised as actual availability.
-- Testimonials are reused from `lib/seo-page-data.ts`, not generated. Confirm client approval and provenance before publication.
+Existing journey names, all 16 journey routes and their data, founder story, service routes, blog/API architecture, brand orange (#e65000), charcoal, and existing media remain in place. No Scientistic Era files were accessed or changed.
 
-## Photography and film
+## Media
 
-- Existing local assets are reused. No replacement stock or generated imagery was downloaded.
-- Supply dedicated food, silk-weaving, and hidden-lane photography. Current food and craft concepts use general Kashi photography; they are not represented as photos of a specific kitchen or studio.
-- No video files were supplied. `components/CinematicCarousel.tsx` supports optional video and caption-track URLs. Until supplied it presents clearly labelled photo stories, without a fake play button.
-- Hero uses `public/images/hero/hero-3.jpg`. Founder uses the existing `founder.jpg`; a higher-resolution approved portrait would improve the desktop presentation.
+- Hero uses the existing `public/kashi-hero.mp4` (10 seconds, 1280 × 720) with the existing riverfront poster, autoplay/muted/loop/playsInline, and a pause option. Reduced-motion visitors see the poster. No media was downloaded or generated.
+- Cinematic Storytelling preserves the four existing photo stories, with a five-second looping carousel. There were no separate story-video sources in the current carousel.
+- Missing `about-1.png` and `about-2.png` journey references now use the existing riverfront image. Dedicated BHU, Ramnagar Fort, food, and weaving photography would make these presentations more specific.
+- Journal upload paths resolve against the existing API host. Failed images use an intentional existing Kashi fallback.
 
-## Functional notes
+## Client confirmation
 
-- Enquiry form prepares a correctly encoded WhatsApp message, then offers an explicit Continue on WhatsApp link. Nothing is automatically sent.
-- No newsletter API existed. Signup opens an explicit email subscription request to hello@soilnsoul.in; it does not falsely report a completed subscription. Connect an approved mailing provider when available.
-- Existing blog API, admin, service detail routes, and backend are retained. Blog data requires NEXT_PUBLIC_API_URL (default http://localhost:5000/api). The homepage offers a journal link when the API is unavailable.
-- Legacy SEO pages and transactional articles are retained. The premium homepage prioritises cultural editorial titles.
+- Founder chronology remains unresolved: the previous homepage referred to Kavita Shastri starting groups in 2018 and formal founding in 2020; the About page identifies Anchal Pandey as founder. The conflict remains flagged in `data/journeys.ts`. No new chronology was invented.
+- Current illustrative reviews are visibly labelled **Guest Stories — Demo** and **Demo review**, with an explicit statement that they are not verified Google reviews. Replace them only with approved genuine guest accounts.
+- Rare Access partner availability and claims such as five-generation recipes still need client confirmation.
+- Journey timelines remain concepts, with no advertised prices, inventory, or fake availability.
+
+## Enquiry and filtering
+
+- Duration and Group Size filters use the actual options already attached to each journey. All current journeys support all configured group bands, so changing Group Size alone can legitimately leave the result count unchanged.
+- Interest filtering uses existing journey descriptions, categories, and highlights.
+- Journey selectors carry duration, group size and preferred date into Design My Journey. WhatsApp and email fields are separate. The traveller reviews the prepared enquiry and explicitly opens WhatsApp; nothing is automatically sent.
+- The existing newsletter flow is an email subscription request, not a connected mailing-list service.
+- Local blog API data was unavailable during verification. Existing empty-state behaviour is retained; no replacement articles were fabricated.
 
 ## Run
 
-From `Soilnsoul-Travels-main/frontend`: `npm ci`, then `npm run dev` (http://localhost:3000). Production: `npm run build`, then `npm start`.
+From `Soilnsoul-Travels-main/frontend`, run `npm run dev` and open http://localhost:3000. Production: `npm run build`, then `npm start`.

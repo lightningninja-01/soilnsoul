@@ -1,5 +1,5 @@
-﻿"use client";
-import { useRef } from "react";
+"use client";
+import { useRef, useEffect, useState } from "react";
 
 const DEMO_REVIEWS = [
   {
@@ -26,19 +26,53 @@ const DEMO_REVIEWS = [
 
 export default function GoogleReviews() {
   const rail = useRef<HTMLDivElement>(null);
-  const move = (direction: number) =>
+  
+  const [paused, setPaused] = useState(false);
+  const pauseTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const interact = () => {
+    setPaused(true);
+    if (pauseTimeout.current) clearTimeout(pauseTimeout.current);
+    pauseTimeout.current = setTimeout(() => setPaused(false), 4000);
+  };
+
+  const move = (direction: number) => {
+    interact();
     rail.current?.scrollBy({
       left: direction * (rail.current.clientWidth * 0.8),
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "instant"
         : "smooth",
     });
+  };
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      const railEl = rail.current;
+      if (!railEl || document.hidden) return;
+      
+      const maxScroll = railEl.scrollWidth - railEl.clientWidth;
+      if (maxScroll <= 0) return;
+
+      let nextScroll = railEl.scrollLeft + (railEl.clientWidth * 0.8);
+      if (railEl.scrollLeft + railEl.clientWidth >= railEl.scrollWidth - 10) {
+        nextScroll = 0;
+      }
+      railEl.scrollTo({
+        left: nextScroll,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      });
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [paused]);
+
   return (
     <section className="sn-section sn-review-section" id="reviews">
       <div className="sn-wrap">
         <div className="sn-section-heading">
           <div>
-            <p className="sn-eyebrow">Guest Stories — Demo</p>
+            <p className="sn-eyebrow">Guest Stories - Demo</p>
             <h2>Kashi, through their eyes.</h2>
             <p className="sn-review-disclosure">
               Illustrative guest stories. These are demo reviews, not verified
@@ -62,6 +96,8 @@ export default function GoogleReviews() {
           className="sn-review-rail"
           tabIndex={0}
           aria-label="Demo guest stories"
+          onPointerDown={interact}
+          onScrollCapture={interact}
         >
           {DEMO_REVIEWS.map((review) => (
             <article key={review.author} className="sn-review">
@@ -80,7 +116,7 @@ export default function GoogleReviews() {
                   {"★".repeat(review.rating)}
                 </span>
               </div>
-              <blockquote>“{review.text}”</blockquote>
+              <blockquote>"{review.text}"</blockquote>
             </article>
           ))}
         </div>

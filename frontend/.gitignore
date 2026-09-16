@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local visual verification captures
+/refinement-*.png
+/verification/*.jpg
+/verification/results.json
+/verification/*.png

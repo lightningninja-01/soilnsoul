@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -123,7 +123,7 @@ export default function SoulJournal({
           onSubmit={(e) => {
             e.preventDefault();
             const email = new FormData(e.currentTarget).get("email");
-            window.location.href = `mailto:hello@soilnsoul.in?subject=${encodeURIComponent("The Soul Journal — newsletter request")}&body=${encodeURIComponent(`Please subscribe ${email} to The Soul Journal. I would like to receive cultural stories and updates by email.`)}`;
+            window.location.href = `mailto:info@soilnsoultravels?subject=${encodeURIComponent("The Soul Journal — newsletter request")}&body=${encodeURIComponent(`Please subscribe ${email} to The Soul Journal. I would like to receive cultural stories and updates by email.`)}`;
           }}
         >
           <label className="sn-sr-only" htmlFor="newsletter-email">

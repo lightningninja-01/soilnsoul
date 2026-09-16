@@ -1,5 +1,5 @@
-﻿"use client";
-import { useState, useRef } from "react";
+"use client";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -24,16 +24,42 @@ export default function ExperienceSelector() {
   const [active, setActive] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const current = experiences[active];
+  
+  const [paused, setPaused] = useState(false);
+  const pauseTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const interact = () => {
+    setPaused(true);
+    if (pauseTimeout.current) clearTimeout(pauseTimeout.current);
+    pauseTimeout.current = setTimeout(() => setPaused(false), 4000);
+  };
+
   const select = (index: number) => {
     setActive(index);
     tabs.current[index]?.scrollIntoView({
       block: "nearest",
       inline: "nearest",
-      behavior: "instant",
+      behavior: "smooth",
     });
   };
+
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      if (!document.hidden) {
+        select((active + 1) % experiences.length);
+      }
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [paused, active]);
+
   return (
-    <div className="sn-discovery">
+    <div 
+      className="sn-discovery"
+      onPointerDown={interact}
+      onKeyDown={interact}
+    >
       <div
         className="sn-experience-tabs"
         role="tablist"

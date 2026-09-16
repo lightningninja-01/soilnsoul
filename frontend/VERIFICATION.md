@@ -1,30 +1,33 @@
-# Editorial V1 verification
+﻿# UI/UX refinement verification — 16 September 2026
 
-## Passed
+## Build and code checks
 
-- Production build: Next.js 16.2.6, TypeScript, and 52 generated pages.
-- Changed-file ESLint: zero errors. Two retained warnings: existing Material Symbols stylesheet in the root layout and unused `ONE_DAY_MS` in sitemap.
-- Browser screenshots reviewed at 1440px desktop, 390px mobile, and 320px narrow mobile. Grid bounds also checked at 768px.
-- Fixed intrinsic grid overflow found in the 320px screenshot; all measured editorial grids now fit the viewport.
-- Mobile menu opens, closes, and responds to Escape.
-- Carousel arrows, pagination state, and keyboard navigation work.
-- FAQ disclosure opens and closes.
-- Enquiry prepares the correct WhatsApp recipient and preserves names, dates, guest count, interests, ampersands, and Unicode. No messages were sent.
-- Journey enquiry includes the selected journey name and duration.
-- Google map loads when scrolled into view.
-- Browser runtime error check returned no errors.
-- `/`, `/experiences`, `/journeys`, all four `/journeys/[slug]` pages, `/about`, `/contact`, `/blog`, `/services/travel`, `/services/stay`, and `/services/city-tour` return 200 with exactly one title, H1, and canonical.
-- Unknown journey returns 404 with one title.
+- Next.js 16.2.6 production build passed, including TypeScript and 64 generated pages.
+- ESLint passed for all changed interactive components and the media helper.
+- Existing homepage, experience, journey, About, Contact, Journal, and representative service routes returned 200 with one title, H1 and canonical. Unknown journey returned 404.
 
-## Scope and limitations
+## Browser verification
 
-- No backend or database code was changed. The local blog API was unavailable, so live article data could not be verified; the homepage and journal render an honest empty state with navigation intact.
-- No video files supplied: cinematic content is labelled as photo stories.
-- Newsletter signup creates an email request; it is not a connected mailing-list subscription.
-- Contact details, founder content, supplied statistics, and existing testimonial source were retained. See `CONTENT_REVIEW.md` for client confirmations.
+Used agent-browser for navigation and screenshots, and its Chrome debugging connection for native touch tests. Evidence is in `verification/`.
 
-## Repeat checks
+- Visually reviewed 1440px desktop and 390px mobile: hero/video, logo/nav, experience selector, carousel, Rare Access, journey cards, filters, reviews, founder, journal, contact/map and footer.
+- Experience tabs support clicking and keyboard arrows.
+- Carousel advances after five seconds; all four slides loop; next/previous and keyboard work.
+- Native CDP touch gestures confirmed left swipe, right swipe, and vertical page scrolling over the carousel.
+- Pause/resume and reduced-motion settings work. With reduced motion, the hero pauses and carousel autoplay stops; manual carousel controls remain available.
+- Layout bounds pass at 320px, 390px and 768px. Loaded homepage images have no broken sources.
+- Mobile navigation opens and closes with Escape.
+- Duration and Interest filters reduce results appropriately; Group Size honours the supported option bands.
+- Selected duration, group range and preferred date carry from a journey detail selector into the enquiry and encoded WhatsApp link.
+- Separate WhatsApp and email fields, Unicode dates, guest counts, and ampersands survive encoding. No external message was sent.
+- Demo review labels are visible, with no Google verification claim.
+- No floating concierge CTA, visible homepage pricing, or unrelated destination in the hero.
+- No browser runtime exceptions detected. Map loads beside contact information.
 
-Run the frontend with `npm run dev`, then `node verify-routes.mjs` for HTTP and metadata checks. `verify-browser.js` is a browser-context interaction check for the homepage; pass its contents to `agent-browser eval` using UTF-8 base64 on Windows. It prepares a demonstration enquiry without following its external link.
+## Limits
 
-The development server is available at http://localhost:3000. Production build: `npm run build`.
+Live blog data could not be verified because the local backend was unavailable. The API and database were not changed. Existing media and content gaps are recorded in `CONTENT_REVIEW.md`.
+
+## Repeat
+
+With the dev server running, use `node verify-routes.mjs` for route/metadata checks. Open the site in agent-browser, get its debugging URL using `agent-browser get cdp-url`, and pass it to `node verification/refinement-check.mjs <cdp-url>` or `node verification/accessibility-check.mjs <cdp-url>`. These prepare enquiries without following external submission links.

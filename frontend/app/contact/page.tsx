@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import ContactClient from "./ContactClient";
 
 export const revalidate = 3600;
@@ -23,7 +23,7 @@ export default function ContactPage() {
       "@type": "TravelAgency",
       name: "Soil n Soul Travels",
       telephone: "+919580417547",
-      email: "hello@soilnsoul.in",
+      email: "info@soilnsoultravels",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Assi Ghat Road",
