@@ -1,4 +1,6 @@
+import { useState, useEffect, useRef } from "react";
 import type { BlogPost } from "@/lib/api";
+import LeadCaptureModal from "@/components/LeadCaptureModal";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -84,6 +86,32 @@ const faqs = [
 ];
 
 export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
+  const [showPopup, setShowPopup] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    // Only run on the client
+    if (typeof window === 'undefined') return;
+
+    const hasShown = sessionStorage.getItem("soilnsoul_contact_popup_shown");
+    if (!hasShown) {
+      timerRef.current = setTimeout(() => {
+        setShowPopup(true);
+        sessionStorage.setItem("soilnsoul_contact_popup_shown", "true");
+      }, 5000);
+    }
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
+
+  const handleManualTrigger = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    sessionStorage.setItem("soilnsoul_contact_popup_shown", "true");
+    setShowPopup(true);
+  };
+
   return (
     <div className="sn-site">
       <section className="sn-hero">
@@ -105,7 +133,7 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
               Design My Journey →
             </Link>
             <Link href="#experiences" className="sn-hero-link">
-              Explore Experiences <span>↓</span>
+              Explore Experiences <span>→</span>
             </Link>
           </div>
         </div>
@@ -116,12 +144,11 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
             Scroll to discover ↓
           </a>
         </div>
-        <a
-          href="https://wa.me/919580417547?text=Hello%20Soil%20N%20Soul,%20I%20would%20like%20to%20plan%20a%20journey."
-          target="_blank"
-          rel="noreferrer"
+        <button
+          type="button"
+          onClick={handleManualTrigger}
           className="sn-concierge"
-          aria-label="Let's Talk via WhatsApp"
+          aria-label="Let's Talk"
         >
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e65000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -131,7 +158,7 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
             <path d="M5 12h14"></path>
             <path d="M12 5l7 7-7 7"></path>
           </svg>
-        </a>
+        </button>
       </section>
 
 
@@ -258,6 +285,7 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
       </section>
       <SoulJournal blogs={blogs} />
       <JourneyEnquiry />
+      {showPopup && <LeadCaptureModal onClose={() => setShowPopup(false)} />}
     </div>
   );
 }
