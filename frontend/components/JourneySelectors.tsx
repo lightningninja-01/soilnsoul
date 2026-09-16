@@ -1,13 +1,13 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { whatsapp } from "@/data/journeys";
 
-export default function JourneySelectors({ 
-  journeyName, 
-  durationOptions, 
-  groupSizeOptions 
-}: { 
+export default function JourneySelectors({
+  journeyName,
+  durationOptions,
+  groupSizeOptions,
+}: {
   journeyName: string;
   durationOptions?: string[];
   groupSizeOptions?: string[];
@@ -24,9 +24,14 @@ export default function JourneySelectors({
       {durationOptions && durationOptions.length > 0 && (
         <label>
           Duration
-          <select value={duration} onChange={(e) => setDuration(e.target.value)}>
-            {durationOptions.map(opt => (
-              <option key={opt} value={opt}>{opt}</option>
+          <select
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+          >
+            {durationOptions.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
             ))}
           </select>
         </label>
@@ -36,8 +41,10 @@ export default function JourneySelectors({
         <label>
           Group Size
           <select value={guests} onChange={(e) => setGuests(e.target.value)}>
-            {groupSizeOptions.map(opt => (
-              <option key={opt} value={opt}>{opt}</option>
+            {groupSizeOptions.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
             ))}
           </select>
         </label>
@@ -45,16 +52,33 @@ export default function JourneySelectors({
 
       <label>
         Preferred Date (Optional)
-        <input 
-          type="text" 
-          placeholder="e.g. 18 October" 
-          value={date} 
-          onChange={(e) => setDate(e.target.value)} 
+        <input
+          type="text"
+          placeholder="e.g. 18 October"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
       </label>
 
-      <div style={{ marginTop: 30, display: "flex", flexDirection: "column", gap: 15 }}>
-        <a href="#contact" className="sn-button">
+      <div
+        style={{
+          marginTop: 30,
+          display: "flex",
+          flexDirection: "column",
+          gap: 15,
+        }}
+      >
+        <a
+          href="#contact"
+          className="sn-button"
+          onClick={() =>
+            window.dispatchEvent(
+              new CustomEvent("journey-preferences", {
+                detail: { duration, guests, date },
+              }),
+            )
+          }
+        >
           Design My Journey ↗
         </a>
         <a

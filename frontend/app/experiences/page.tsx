@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { experiences } from "@/data/journeys";
@@ -44,7 +44,7 @@ export default function ExperiencesPage() {
             </div>
             <div>
               <p className="sn-eyebrow">Experience 0{i + 1}</p>
-              <h2>{e.name}</h2>
+              <h2>{e.name.replace(/^\d+\s/, "")}</h2>
               <p>{e.description}</p>
               <p>{stories[i]}</p>
               <Link href="/#contact" className="sn-text-link">

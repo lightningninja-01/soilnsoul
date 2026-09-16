@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState, useEffect, UIEvent } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 
 const films = [
@@ -29,53 +29,111 @@ const films = [
   },
 ];
 
+const count = films.length;
+const slides = [...films, ...films, ...films]; // Infinite loop trick
+
 export default function CinematicCarousel() {
+  const scroller = useRef<HTMLDivElement>(null);
+  const position = useRef(count); // start in middle block
+  const settling = useRef<NodeJS.Timeout | null>(null);
+  const dragging = useRef<{ x: number; left: number } | null>(null);
   const [active, setActive] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const handleScroll = (e: UIEvent<HTMLDivElement>) => {
-    if (!scrollRef.current) return;
-    const scrollLeft = scrollRef.current.scrollLeft;
-    const itemWidth = scrollRef.current.children[0]?.clientWidth || 0;
-    if (itemWidth > 0) {
-      const newActive = Math.round(scrollLeft / itemWidth);
-      if (newActive !== active) setActive(newActive);
-    }
-  };
-
-  const move = (delta: number) => {
-    if (!scrollRef.current) return;
-    const itemWidth = scrollRef.current.children[0]?.clientWidth || 0;
-    const newIndex = Math.max(0, Math.min(films.length - 1, active + delta));
-    scrollRef.current.scrollTo({
-      left: newIndex * itemWidth,
-      behavior: "smooth",
+  const [paused, setPaused] = useState(false);
+  
+  const scrollTo = useCallback((index: number, smooth = true) => {
+    const el = scroller.current;
+    if (!el) return;
+    const slide = el.children[index] as HTMLElement;
+    if (!slide) return;
+    
+    position.current = index;
+    el.scrollTo({
+      left: slide.offsetLeft - (el.clientWidth - slide.clientWidth) / 2,
+      behavior: smooth ? "smooth" : "instant",
     });
+  }, []);
+
+  const move = useCallback(
+    (delta: number) => {
+      scrollTo(position.current + delta);
+    },
+    [scrollTo]
+  );
+
+  useEffect(() => {
+    // Initial center
+    scrollTo(count, false);
+    
+    const resize = new ResizeObserver(() => {
+      scrollTo(count + (position.current % count), false);
+    });
+    if (scroller.current) resize.observe(scroller.current);
+    
+    return () => resize.disconnect();
+  }, [scrollTo]);
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      if (!document.hidden && !dragging.current) {
+        move(1);
+      }
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [paused, move]);
+
+  const onScroll = () => {
+    const el = scroller.current;
+    if (!el) return;
+    
+    const center = el.scrollLeft + el.clientWidth / 2;
+    let nearest = 0;
+    let distance = Infinity;
+    
+    Array.from(el.children).forEach((child, i) => {
+      const slide = child as HTMLElement;
+      const d = Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center);
+      if (d < distance) {
+        distance = d;
+        nearest = i;
+      }
+    });
+    
+    position.current = nearest;
+    setActive(nearest % count);
+    
+    if (settling.current) clearTimeout(settling.current);
+    settling.current = setTimeout(() => {
+      if (!dragging.current && (position.current < count || position.current >= count * 2)) {
+        scrollTo(count + (position.current % count), false);
+      }
+    }, 150);
   };
 
   return (
-    <section
-      className="sn-section sn-cinema"
-      aria-roledescription="carousel"
-      aria-label="Cinematic Storytelling"
-    >
-      <div className="sn-wrap sn-section-heading">
+    <section className="sn-section sn-cinema" aria-label="Cinematic Storytelling">
+      <div className="sn-wrap sn-section-heading" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '20px' }}>
         <div>
-          <p className="sn-eyebrow">Cinematic Storytelling</p>
+          <p className="sn-eyebrow">THE KASHI STORIES</p>
           <h2>
-            A city you don’t just see.
-            <br />
-            <em>A city you feel.</em>
+            Kashi, through a<br />
+            different lens.
           </h2>
         </div>
-        <div className="sn-cinema-nav">
-          <button onClick={() => move(-1)} aria-label="Previous story" disabled={active === 0}>
+        
+        <div style={{ display: 'flex', gap: '15px' }}>
+          <button 
+            aria-label="Previous story" 
+            onClick={() => { setPaused(true); move(-1); setTimeout(() => setPaused(false), 4000); }}
+            style={{ width: '44px', height: '44px', borderRadius: '50%', border: '1px solid #d1cbc0', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
             ←
           </button>
-          <span aria-live="polite">
-            0{active + 1} / 0{films.length}
-          </span>
-          <button onClick={() => move(1)} aria-label="Next story" disabled={active === films.length - 1}>
+          <button 
+            aria-label="Next story" 
+            onClick={() => { setPaused(true); move(1); setTimeout(() => setPaused(false), 4000); }}
+            style={{ width: '44px', height: '44px', borderRadius: '50%', border: '1px solid #d1cbc0', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
             →
           </button>
         </div>
@@ -83,22 +141,50 @@ export default function CinematicCarousel() {
 
       <div className="sn-film-container">
         <div
-          ref={scrollRef}
+          ref={scroller}
           className="sn-film-scroll"
-          onScroll={handleScroll}
-          tabIndex={0}
-          aria-label="Swipe to explore photo stories"
+          onScroll={onScroll}
+          onPointerDown={(e) => {
+            if (e.pointerType !== "mouse") return;
+            dragging.current = { x: e.clientX, left: e.currentTarget.scrollLeft };
+            e.currentTarget.setPointerCapture(e.pointerId);
+            e.currentTarget.style.scrollSnapType = "none";
+            setPaused(true);
+          }}
+          onPointerMove={(e) => {
+            if (dragging.current) {
+              e.currentTarget.scrollLeft = dragging.current.left + dragging.current.x - e.clientX;
+            }
+          }}
+          onPointerUp={(e) => {
+            if (!dragging.current) return;
+            dragging.current = null;
+            e.currentTarget.style.scrollSnapType = "";
+            scrollTo(position.current);
+            setTimeout(() => setPaused(false), 4000);
+          }}
+          onPointerCancel={(e) => {
+            dragging.current = null;
+            e.currentTarget.style.scrollSnapType = "";
+            setPaused(false);
+          }}
         >
-          {films.map((f, i) => (
+          {slides.map((film, i) => (
             <article
-              key={f.title}
-              className={`sn-film ${i === active ? "is-active" : ""}`}
-              aria-hidden={i !== active}
+              key={i}
+              className={`sn-film ${i % count === active ? "is-active" : ""}`}
+              onClick={() => {
+                setPaused(true);
+                scrollTo(i);
+                setTimeout(() => setPaused(false), 4000);
+              }}
+              style={{ cursor: i % count === active ? 'default' : 'pointer' }}
             >
               <div className="sn-film-image-wrapper">
                 <Image
-                  src={f.image}
-                  alt={f.alt}
+                  draggable={false}
+                  src={film.image}
+                  alt={film.alt}
                   fill
                   sizes="(max-width:700px) 85vw, 60vw"
                 />
@@ -106,20 +192,16 @@ export default function CinematicCarousel() {
             </article>
           ))}
         </div>
-      </div>
-      
-      <div className="sn-film-info">
-        {films.map((f, i) => (
-           <div 
-             key={f.title} 
-             className={`sn-film-text ${i === active ? 'is-active' : ''}`}
-             aria-hidden={i !== active}
-           >
-             <p className="sn-eyebrow">A Kashi photo story / 0{i + 1}</p>
-             <h3>{f.title}</h3>
-             <p>{f.caption}</p>
-           </div>
-        ))}
+
+        <div className="sn-film-info sn-wrap">
+          {films.map((film, i) => (
+            <div key={i} className={`sn-film-text ${i === active ? "is-active" : ""}`}>
+              <p className="sn-eyebrow">Kashi photo story / 0{i + 1}</p>
+              <h3>{film.title}</h3>
+              <p>{film.caption}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
-"use client";
-import { useState } from "react";
+﻿"use client";
+import { useEffect, useRef, useState } from "react";
 import { whatsapp } from "@/data/journeys";
 export default function JourneyEnquiry({
   journey = "",
@@ -9,6 +9,25 @@ export default function JourneyEnquiry({
   duration?: string;
 }) {
   const [ready, setReady] = useState("");
+  const [selectedDuration, setSelectedDuration] = useState(duration);
+  const formRef = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    const receive = (event: Event) => {
+      const preference = (
+        event as CustomEvent<{ duration: string; guests: string; date: string }>
+      ).detail;
+      setSelectedDuration(preference.duration);
+      setReady("");
+      const form = formRef.current;
+      if (!form) return;
+      (form.elements.namedItem("dates") as HTMLInputElement).value =
+        preference.date;
+      (form.elements.namedItem("guests") as HTMLInputElement).value =
+        preference.guests.replace(" Guests", "");
+    };
+    window.addEventListener("journey-preferences", receive);
+    return () => window.removeEventListener("journey-preferences", receive);
+  }, []);
   return (
     <section id="contact" className="sn-section sn-contact">
       <div className="sn-wrap">
@@ -31,11 +50,12 @@ export default function JourneyEnquiry({
             </div>
             <form
               className="sn-form"
+              ref={formRef}
               onChange={() => setReady("")}
               onSubmit={(e) => {
                 e.preventDefault();
                 const data = new FormData(e.currentTarget);
-                const message = `Hi Soil n Soul,\n${journey ? `I'm interested in ${journey}.` : "I would love to design my journey to Kashi."}\nName: ${data.get("name")}\nWhatsApp / Email: ${data.get("contact")}\nDate: ${data.get("dates") || "Flexible"}\nGuests: ${data.get("guests")}${duration ? `\nDuration: ${duration}` : ""}\nInterests: ${data.getAll("interests").join(", ") || "Open to suggestions"}\nMessage: ${data.get("message") || "I would love to know more."}`;
+                const message = `Hi Soil n Soul,\n${journey ? `I'm interested in ${journey}.` : "I would love to design my journey to Kashi."}\nName: ${data.get("name")}\nWhatsApp: ${data.get("contact")}\nEmail: ${data.get("email") || "Not provided"}\nDate: ${data.get("dates") || "Flexible"}\nGuests: ${data.get("guests")}${selectedDuration ? `\nDuration: ${selectedDuration}` : ""}\nInterests: ${data.getAll("interests").join(", ") || "Open to suggestions"}\nMessage: ${data.get("message") || "I would love to know more."}`;
                 setReady(whatsapp(message));
               }}
             >
@@ -49,10 +69,11 @@ export default function JourneyEnquiry({
                 />
               </label>
               <label>
-                WhatsApp Number / Email
+                WhatsApp Number
                 <input
                   name="contact"
-                  autoComplete="email"
+                  autoComplete="tel"
+                  type="tel"
                   required
                   maxLength={150}
                 />
@@ -69,11 +90,21 @@ export default function JourneyEnquiry({
                 Number of Guests
                 <input
                   name="guests"
-                  type="number"
-                  min="1"
-                  max="100"
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]+([–-][0-9]+|\+)?"
+                  maxLength={12}
                   defaultValue="2"
                   required
+                />
+              </label>
+              <label className="sn-full">
+                Email (optional)
+                <input
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  maxLength={150}
                 />
               </label>
               <fieldset>

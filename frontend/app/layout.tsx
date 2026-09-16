@@ -2,6 +2,7 @@
 import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import "./editorial.css";
+import "./refinement.css";
 import SiteChrome from "@/components/SiteChrome";
 
 const manrope = Manrope({

@@ -2,7 +2,6 @@ import type { BlogPost } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ExperienceGrid,
   JourneyGrid,
   Founder,
   Values,
@@ -12,23 +11,26 @@ import CinematicCarousel from "@/components/CinematicCarousel";
 import JourneyEnquiry from "@/components/JourneyEnquiry";
 import SoulJournal from "@/components/SoulJournal";
 import GoogleReviews from "@/components/GoogleReviews";
-import { TESTIMONIALS } from "@/lib/seo-page-data";
+import ExperienceSelector from "@/components/ExperienceSelector";
+import HeroVideo from "@/components/HeroVideo";
+
 const rare = [
-  ["Private Artisan Visits", "Master weavers & craftsmen, by appointment only"],
-  ["Family-run Kitchens", "Recipes unchanged across five generations"],
-  ["Hidden Temples", "Unmarked shrines beyond every guidebook"],
   [
     "Private Cultural Performances",
     "Thumri, Dhrupad & classical arts in intimate settings",
   ],
   ["Local Storytellers", "Living historians who carry Kashi’s oral tradition"],
   ["Heritage Homes", "Private havelis rarely opened to visitors"],
-  ["Traditional Craftsmen", "Lost arts: brasswork, zardozi, Banarasi brocade"],
+  ["Traditional Craftsmen", "Brasswork, zardozi and Banarasi brocade"],
+  ["Private Artisan Visits", "Master weavers & craftsmen, by appointment only"],
+  ["Family-run Kitchens", "Recipes unchanged across five generations"],
+  ["Hidden Temples", "Unmarked shrines beyond every guidebook"],
   [
     "Private Ganga Experiences",
     "Exclusive dawn boat, solo ghat rituals, private aarti",
   ],
 ];
+
 const components = [
   ["Travel", "Car · Bike · Traditional Boat", "travel"],
   ["Stays", "Budget Homestays · Heritage Havelis · Comfort Hotels", "stay"],
@@ -53,6 +55,7 @@ const components = [
     "travel",
   ],
 ];
+
 const faqs = [
   [
     "Is Kashi suitable for solo travellers?",
@@ -79,39 +82,27 @@ const faqs = [
     "Share your preferences through the enquiry form or WhatsApp. We discuss your interests, suggest a journey, and refine the details together before confirming arrangements.",
   ],
 ];
+
 export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
   return (
     <div className="sn-site">
       <section className="sn-hero">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/images/hero/hero-3.jpg"
-          className="sn-hero-video"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        >
-          <source src="/kashi-hero.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo />
         <div className="sn-hero-shade" />
         <div className="sn-wrap sn-hero-content">
-          <p className="sn-eyebrow">
-            Varanasi, India · Curated by those who call it home
-          </p>
+          <p className="sn-eyebrow">THE SOUL OF KASHI</p>
           <h1>
-            <span>Discover Kashi</span>Beyond
+            Experience Varanasi
             <br />
-            <em>Tourism.</em>
+            <em>beyond the ordinary.</em>
           </h1>
           <p>
-            A river of stories. A city of souls.
-            <br />
-            Deeply local experiences, thoughtfully shaped around you.
+            Discover the stories, rituals, people and traditions that make Kashi
+            unlike anywhere else.
           </p>
           <div className="sn-hero-actions">
             <Link href="#contact" className="sn-button">
-              Design My Journey ↗
+              Design My Journey →
             </Link>
             <Link href="#experiences" className="sn-hero-link">
               Explore Experiences <span>↓</span>
@@ -119,20 +110,39 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
           </div>
         </div>
         <div className="sn-hero-bottom sn-wrap">
-          <span>25.3176° N &nbsp; 82.9739° E</span>
+          <span>FROM THE SOIL OF KASHI TO THE SOUL OF EVERY TRAVELER.</span>
           <span>A slower way to discover. A deeper way to connect.</span>
           <a href="#experiences" aria-label="Scroll to Signature Experiences">
             Scroll to discover ↓
           </a>
         </div>
+        <a
+          href="https://wa.me/919580417547?text=Hello%20Soil%20N%20Soul,%20I%20would%20like%20to%20plan%20a%20journey."
+          target="_blank"
+          rel="noreferrer"
+          className="sn-concierge"
+          aria-label="Let's Talk via WhatsApp"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e65000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>LET'S TALK</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ opacity: 0.5 }}>
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
       </section>
+
+
+
       <section id="experiences" className="sn-section sn-wrap">
         <SectionHeading
           label="Signature Experiences"
           title="Six verticals. One city’s infinite depth."
           text="Follow what moves you. The sacred, the everyday, the unexpected — each opens a different door to Kashi."
         />
-        <ExperienceGrid />
+        <ExperienceSelector />
       </section>
       <CinematicCarousel />
       <section className="sn-section sn-wrap sn-rare">
@@ -172,10 +182,16 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
         <div className="sn-wrap">
           <SectionHeading
             label="Premium Personalised Journeys"
-            title="Your time. Your rhythm. Your Kashi."
-            text="Consider these a beginning. Each journey is shaped around your interests, your people, and your pace."
+            title="A deeper connection, at your pace."
+            text="Thoughtfully designed experiences for discovering the many sides of Kashi."
           />
           <JourneyGrid />
+          <div style={{ textAlign: "center", marginTop: "80px" }}>
+             <p style={{ marginBottom: "20px", color: "#6a665c", fontSize: "14px" }}>Can't find exactly what you're looking for?</p>
+             <a href="https://wa.me/919580417547?text=Hello%20Soil%20N%20Soul,%20I%20would%20like%20a%20custom%20quote." target="_blank" rel="noreferrer" className="sn-button" style={{ display: "inline-flex" }}>
+               GET A CUSTOM QUOTE
+             </a>
+          </div>
         </div>
       </section>
       <section id="services" className="sn-section sn-wrap">
@@ -224,7 +240,7 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
             </h2>
             <p>Something else on your mind?</p>
             <Link className="sn-text-link" href="#contact">
-              Talk to someone who knows Kashi ↗
+              Design My Journey ↗
             </Link>
           </div>
           <div>

@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/api";
+import { journalImage } from "@/lib/media";
 const categories = [
   "All stories",
   "Travel Guide",
@@ -64,11 +65,17 @@ export default function SoulJournal({
               <Link href={`/blog/${b.slug}`}>
                 <div className="sn-journal-image">
                   <Image
-                    src={imgErrors[b._id] ? "/images/hero/hero-3.jpg" : (b.bannerImage || "/images/hero/hero-3.jpg")}
+                    src={
+                      imgErrors[b._id]
+                        ? "/images/hero/hero-3.jpg"
+                        : journalImage(b.bannerImage)
+                    }
                     alt={b.title}
                     fill
                     sizes="(max-width:700px) 90vw, 45vw"
-                    onError={() => setImgErrors(prev => ({ ...prev, [b._id]: true }))}
+                    onError={() =>
+                      setImgErrors((prev) => ({ ...prev, [b._id]: true }))
+                    }
                   />
                 </div>
                 <p className="sn-eyebrow">{b.category}</p>

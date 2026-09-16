@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 const navigation = [
-  ["Home", "/"],
+  ["Explore Kashi", "/"],
   ["Experiences", "/experiences"],
   ["Journeys", "/journeys"],
   ["About", "/about"],
@@ -32,23 +33,12 @@ export default function Navbar() {
     <header
       className={`sn-nav ${scrolled || pathname !== "/" || open ? "sn-nav-solid" : ""}`}
     >
-      <Link href="/" className="sn-brand" aria-label="Soil n Soul Travels home">
-        <span className="sn-mark" aria-hidden="true">
-          <svg width="34" height="34" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="4.5" fill="#e65000"/>
-            <rect x="14.5" y="1" width="3" height="8" fill="#e65000"/>
-            <rect x="14.5" y="23" width="3" height="8" fill="#e65000"/>
-            <rect x="1" y="14.5" width="8" height="3" fill="#e65000"/>
-            <rect x="23" y="14.5" width="8" height="3" fill="#e65000"/>
-            <rect x="7" y="7" width="3.5" height="3.5" fill="#e65000"/>
-            <rect x="21.5" y="7" width="3.5" height="3.5" fill="#e65000"/>
-            <rect x="7" y="21.5" width="3.5" height="3.5" fill="#e65000"/>
-            <rect x="21.5" y="21.5" width="3.5" height="3.5" fill="#e65000"/>
-          </svg>
-        </span>
-        <span>
-          SOIL <i>N</i> SOUL
-        </span>
+      <Link href="/" className="sn-brand" aria-label="Soil n Soul Travels home" style={{ display: 'flex', alignItems: 'center' }}>
+        <img 
+          src="/soil-n-soul-logo.svg" 
+          alt="Soil n Soul Travels" 
+          className="sn-logo-img"
+        />
       </Link>
       <nav aria-label="Main navigation" className="sn-desktop-nav">
         {navigation.map(([n, h]) => (
@@ -61,7 +51,7 @@ export default function Navbar() {
           </Link>
         ))}
       </nav>
-      <Link className="sn-button sn-nav-cta" href="#contact">
+      <Link className="sn-button sn-nav-cta" href="/#contact">
         Design My Journey
       </Link>
       <button

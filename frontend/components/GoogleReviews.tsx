@@ -1,62 +1,89 @@
-"use client";
+﻿"use client";
+import { useRef } from "react";
 
-import React from "react";
-
-const reviews = [
+const DEMO_REVIEWS = [
   {
-    id: 1,
-    name: "Sample Guest",
+    author: "Elena R.",
+    text: "The evening aarti experience was breathtaking. Their local guide took us to a quiet spot away from the crowds, allowing us to truly feel the spiritual weight of Kashi. Highly recommended for anyone seeking an authentic connection.",
     rating: 5,
-    text: "Every detail felt considered without ever feeling over-planned. Kashi felt completely different when experienced through people who genuinely know the city.",
-    source: "DEMO"
   },
   {
-    id: 2,
-    name: "Sample Traveller",
+    author: "David M.",
+    text: "Exploring the hidden alleys of Varanasi with Soil n Soul was the highlight of our India trip. We saw temples and tasted street food that we would never have found on our own. A perfectly curated experience.",
     rating: 5,
-    text: "The morning on the Ganga, the old-city walk and the artisan experience made the journey feel deeply personal rather than like a standard tour.",
-    source: "DEMO"
   },
   {
-    id: 3,
-    name: "Sample Explorer",
+    author: "Anita S.",
+    text: "Our multi-day spiritual journey was planned flawlessly. The deep knowledge of the heritage guides and the comfort of the heritage stays made exploring Kashi entirely stress-free.",
     rating: 5,
-    text: "From the quiet dawn boat ride to the vibrant evening Aarti, everything was handled with such care and authenticity. A truly unforgettable time.",
-    source: "DEMO"
-  }
+  },
+  {
+    author: "James H.",
+    text: "I wanted to photograph the real Banaras, and they designed a custom early morning trail for me. Incredible light, incredible access, and genuinely kind people.",
+    rating: 5,
+  },
 ];
 
 export default function GoogleReviews() {
+  const rail = useRef<HTMLDivElement>(null);
+  const move = (direction: number) =>
+    rail.current?.scrollBy({
+      left: direction * (rail.current.clientWidth * 0.8),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
   return (
-    <section className="sn-section sn-reviews sn-wrap">
-      <div className="sn-reviews-header">
-        <div>
-          <p className="sn-eyebrow">Kashi, Through Their Eyes</p>
-          <h2>
-            4.9 <span className="sn-star">★</span>
-          </h2>
-          <p className="sn-reviews-subtitle">Guest Stories — Demo</p>
+    <section className="sn-section sn-review-section" id="reviews">
+      <div className="sn-wrap">
+        <div className="sn-section-heading">
+          <div>
+            <p className="sn-eyebrow">Guest Stories — Demo</p>
+            <h2>Kashi, through their eyes.</h2>
+            <p className="sn-review-disclosure">
+              Illustrative guest stories. These are demo reviews, not verified
+              Google reviews.
+            </p>
+          </div>
+          <div className="sn-review-controls">
+            <button
+              aria-label="Previous guest stories"
+              onClick={() => move(-1)}
+            >
+              ←
+            </button>
+            <button aria-label="Next guest stories" onClick={() => move(1)}>
+              →
+            </button>
+          </div>
         </div>
-        <a href="#contact" className="sn-text-link">
-          Read All Google Reviews ↗
-        </a>
-      </div>
-
-      <div className="sn-reviews-grid">
-        {reviews.map((review) => (
-          <article key={review.id} className="sn-review-card">
-            <div className="sn-review-rating">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <span key={i} className={i < review.rating ? "active" : ""}>★</span>
-              ))}
-            </div>
-            <blockquote>&ldquo;{review.text}&rdquo;</blockquote>
-            <div className="sn-review-author">
-              <strong>{review.name}</strong>
-              <span>— {review.source} REVIEW</span>
-            </div>
-          </article>
-        ))}
+        <div
+          ref={rail}
+          className="sn-review-rail"
+          tabIndex={0}
+          aria-label="Demo guest stories"
+        >
+          {DEMO_REVIEWS.map((review) => (
+            <article key={review.author} className="sn-review">
+              <div className="sn-review-person">
+                <span className="sn-avatar" aria-hidden="true">
+                  {review.author.charAt(0)}
+                </span>
+                <div>
+                  <h3>{review.author}</h3>
+                  <span>Demo review</span>
+                </div>
+                <span
+                  className="sn-review-rating"
+                  aria-label={`${review.rating} out of 5 stars`}
+                >
+                  {"★".repeat(review.rating)}
+                </span>
+              </div>
+              <blockquote>“{review.text}”</blockquote>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

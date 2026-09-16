@@ -1,19 +1,20 @@
-﻿import Link from "next/link";
+import Link from "next/link";
+import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="sn-footer">
       <div className="sn-wrap sn-footer-grid">
         <div>
-          <Link href="/" className="sn-brand">
-            <span className="sn-mark">✳</span>
-            <span>
-              SOIL <i>n</i> SOUL<small>T R A V E L S</small>
-            </span>
+          <Link href="/" className="sn-brand" style={{ display: 'flex', alignItems: 'center' }}>
+            <img 
+              src="/soil-n-soul-logo.svg" 
+              alt="Soil n Soul Travels" 
+              className="sn-logo-img"
+            />
           </Link>
-          <p>
-            Rooted in Kashi.
-            <br />
-            Made meaningful by its people.
+          <p style={{ marginTop: '20px', lineHeight: '1.8', color: '#c6c3ba' }}>
+            FROM THE SOIL OF KASHI<br />
+            TO THE SOUL OF EVERY TRAVELER.
           </p>
         </div>
         <div>

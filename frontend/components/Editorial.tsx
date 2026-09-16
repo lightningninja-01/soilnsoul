@@ -1,4 +1,5 @@
-import Image from "next/image";
+﻿import Image from "next/image";
+import JourneyCard from "./JourneyCard";
 import Link from "next/link";
 import { experiences, journeys, founderStory, values } from "@/data/journeys";
 export function SectionHeading({
@@ -48,39 +49,31 @@ export function ExperienceGrid() {
   );
 }
 export function JourneyGrid() {
+  const featured = journeys.filter((j) => j.category === "Signature Journey");
+  const local = journeys.filter((j) => j.category === "Explore Kashi");
   return (
-    <div className="sn-journeys">
-      {journeys.map((j, i) => (
-        <article key={j.slug} className="sn-journey">
-          <Link href={`/journeys/${j.slug}`} className="sn-journey-image">
-            <Image
-              src={j.image}
-              alt={
-                j.name === "The Banarasi Table"
-                  ? "Evening rituals in Banaras"
-                  : j.name
-              }
-              fill
-              sizes="(max-width: 700px) 88vw, 45vw"
-            />
-            <span>
-              0{i + 1} / {j.mood}
-            </span>
-          </Link>
-          <div className="sn-journey-meta">
-            {j.duration}
-            <span>{j.guests}</span>
-          </div>
-          <h3>
-            <Link href={`/journeys/${j.slug}`}>{j.name}</Link>
-          </h3>
-          <p>{j.description}</p>
-          <Link className="sn-text-link" href={`/journeys/${j.slug}`}>
-            Discover Journey <span>↗</span>
-          </Link>
-        </article>
-      ))}
-    </div>
+    <>
+      <div className="sn-browse-heading">
+        <h3>Featured Journeys</h3>
+        <Link href="/journeys" className="sn-text-link">
+          View all journeys →
+        </Link>
+      </div>
+      <div className="sn-journey-rail" aria-label="Featured Journeys">
+        {featured.map((j) => (
+          <JourneyCard key={j.slug} journey={j} />
+        ))}
+      </div>
+      <div className="sn-browse-heading sn-browse-local">
+        <h3>Explore Kashi</h3>
+        <p>Find your own way into the city.</p>
+      </div>
+      <div className="sn-journey-rail" aria-label="Explore Kashi">
+        {local.map((j) => (
+          <JourneyCard key={j.slug} journey={j} />
+        ))}
+      </div>
+    </>
   );
 }
 export function Founder({ full = false }: { full?: boolean }) {
