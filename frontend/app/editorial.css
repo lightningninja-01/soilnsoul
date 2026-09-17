@@ -1736,7 +1736,7 @@
 }
 
 /* ===================================================
-   COMPACT EDITORIAL VISUALS & PRIVATE JOURNEY COMPONENTS
+   COMPACT EDITORIAL VISUALS & SECTION RHYTHM REFINEMENT
    =================================================== */
 
 /* 1. Private Journey Components */
@@ -1745,12 +1745,14 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 40px;
+  margin-bottom: 24px;
 }
 .sn-components-intro-image {
   flex-shrink: 0;
   width: 320px;
   max-width: 320px;
   height: 210px;
+  max-height: 210px;
   position: relative;
   overflow: hidden;
   border-radius: 2px;
@@ -1763,29 +1765,24 @@
 
 .sn-components-list {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 40px;
+  margin-top: 36px;
 }
 .sn-component-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 280px 1fr 170px;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding-block: 28px;
+  gap: 32px;
+  padding: 22px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 126px;
 }
 .sn-component-main {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  flex: 1;
-  min-width: 0;
+  display: contents;
 }
 .sn-component-lead {
   display: flex;
   align-items: center;
   gap: 20px;
-  width: 320px;
-  flex-shrink: 0;
 }
 .sn-component-number {
   color: #e65000;
@@ -1815,18 +1812,21 @@
 .sn-component-desc {
   font-size: 14px;
   color: #68675f;
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
-  flex: 1;
-  padding-right: 20px;
+  padding-right: 16px;
 }
 .sn-component-thumb-wrap {
-  flex-shrink: 0;
   width: 170px;
+  min-width: 170px;
+  max-width: 170px;
   height: 110px;
+  min-height: 110px;
+  max-height: 110px;
   position: relative;
   overflow: hidden;
   border-radius: 2px;
+  justify-self: end;
 }
 .sn-component-thumb-wrap img {
   width: 100%;
@@ -1838,20 +1838,20 @@
   transform: scale(1.025);
 }
 
-/* 2. Lower Sections Supporting Images */
-
-/* Values: The Soil N Soul Way */
+/* 2. The Soil N Soul Way (Values) */
 .sn-way-header-split {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 40px;
-  margin-bottom: 48px;
+  margin-bottom: 36px;
 }
 .sn-way-image {
   flex-shrink: 0;
-  width: 320px;
-  height: 210px;
+  width: 300px;
+  max-width: 300px;
+  height: 195px;
+  max-height: 195px;
   position: relative;
   overflow: hidden;
   border-radius: 2px;
@@ -1862,17 +1862,20 @@
   object-fit: cover;
 }
 
-/* Guest Stories */
+/* 3. Guest Stories */
 .sn-reviews-container {
   display: flex;
-  align-items: flex-start;
-  gap: 28px;
+  align-items: stretch;
+  gap: 24px;
   width: 100%;
 }
 .sn-review-editorial-image {
   flex-shrink: 0;
-  width: 280px;
-  height: 210px;
+  width: 270px;
+  max-width: 270px;
+  height: auto;
+  min-height: 190px;
+  max-height: 210px;
   position: relative;
   overflow: hidden;
   border-radius: 2px;
@@ -1887,14 +1890,22 @@
   min-width: 0;
 }
 
-/* FAQ: Before Your Journey */
+/* 4. FAQ: Before Your Journey */
+.sn-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 70px;
+  align-items: start;
+}
 .sn-faq-image {
   position: relative;
-  width: 300px;
-  height: 210px;
+  width: 290px;
+  max-width: 290px;
+  height: 195px;
+  max-height: 195px;
   border-radius: 2px;
   overflow: hidden;
-  margin-top: 32px;
+  margin-top: 28px;
 }
 .sn-faq-image img {
   width: 100%;
@@ -1902,33 +1913,73 @@
   object-fit: cover;
 }
 
-/* Enquiry: Design My Journey */
+/* 5. Enquiry: Design My Journey (CRITICAL MAP ALIGNMENT FIX) */
+.sn-contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  margin-top: 45px;
+  align-items: start;
+}
+.sn-contact-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
 .sn-enquiry-editorial-image {
   position: relative;
-  width: 300px;
-  height: 210px;
+  width: 270px;
+  max-width: 280px;
+  height: 175px;
+  max-height: 180px;
   border-radius: 2px;
   overflow: hidden;
-  margin-bottom: 24px;
+  margin: 0;
+  flex-shrink: 0;
 }
 .sn-enquiry-editorial-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+.sn-contact-aside .sn-map {
+  min-height: 500px;
+  position: relative;
+  background: #d6d1c6;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0;
+}
+.sn-contact-aside .sn-map iframe {
+  width: 100%;
+  min-height: 400px;
+  flex: 1;
+  border: 0;
+  filter: saturate(0.45);
+}
+.sn-contact-aside .sn-map > div {
+  background: #242521;
+  color: #f5f1e9;
+  padding: 24px;
+}
 
-/* Soul Journal: Visual Moment 1 (Header) & Moment 2 (Newsletter) */
+/* 6. Soul Journal: Visual Moment 1 (Header) & Moment 2 (Newsletter) */
 .sn-journal-header-split {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  margin-bottom: 30px;
+  align-items: flex-end;
+  gap: 35px;
+  margin-bottom: 28px;
 }
 .sn-journal-header-visual {
   flex-shrink: 0;
-  width: 280px;
-  height: 190px;
+  width: 270px;
+  max-width: 270px;
+  height: 180px;
+  max-height: 180px;
   position: relative;
   overflow: hidden;
   border-radius: 2px;
@@ -1938,10 +1989,21 @@
   height: 100%;
   object-fit: cover;
 }
+.sn-newsletter {
+  border-top: 1px solid #ccc7bc;
+  margin-top: 50px;
+  padding-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
 .sn-newsletter-visual {
   flex-shrink: 0;
-  width: 280px;
-  height: 190px;
+  width: 270px;
+  max-width: 270px;
+  height: 180px;
+  max-height: 180px;
   position: relative;
   overflow: hidden;
   border-radius: 2px;
@@ -1958,11 +2020,15 @@
 
 /* Responsive Rules & Mobile Constraints */
 @media (max-width: 1024px) {
-  .sn-component-lead {
-    width: 240px;
+  .sn-component-row {
+    grid-template-columns: 240px 1fr 170px;
+    gap: 20px;
   }
   .sn-component-title {
     font-size: 20px;
+  }
+  .sn-contact-grid {
+    gap: 40px;
   }
 }
 
@@ -1970,7 +2036,8 @@
   .sn-components-header-split {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 18px;
+    margin-bottom: 20px;
   }
   .sn-components-intro-image {
     width: 100%;
@@ -1982,82 +2049,110 @@
 
   .sn-way-header-split {
     flex-direction: column;
-    gap: 20px;
-    margin-bottom: 32px;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 24px;
   }
   .sn-way-image {
     width: 100%;
     max-width: 280px;
     height: auto;
-    max-height: 210px;
+    max-height: 190px;
     aspect-ratio: 3/2;
   }
 
   .sn-reviews-container {
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
   }
   .sn-review-editorial-image {
     width: 100%;
     max-width: 280px;
     height: auto;
-    max-height: 210px;
+    max-height: 190px;
     aspect-ratio: 4/3;
   }
   .sn-reviews-container .sn-review-rail {
     width: 100%;
   }
 
+  .sn-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
   .sn-faq-image {
     width: 100%;
     max-width: 280px;
     height: auto;
-    max-height: 210px;
+    max-height: 190px;
     aspect-ratio: 3/2;
-    margin-top: 20px;
-    margin-bottom: 24px;
+    margin-top: 16px;
+    margin-bottom: 12px;
   }
 
+  .sn-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .sn-contact-aside {
+    width: 100%;
+    gap: 16px;
+  }
   .sn-enquiry-editorial-image {
     width: 100%;
     max-width: 280px;
     height: auto;
-    max-height: 210px;
+    max-height: 180px;
     aspect-ratio: 3/2;
-    margin-bottom: 20px;
+    margin: 0;
+  }
+  .sn-contact-aside .sn-map {
+    width: 100%;
+    min-height: 420px;
+  }
+  .sn-contact-aside .sn-map iframe {
+    min-height: 320px;
   }
 
   .sn-journal-header-split {
     flex-direction: column;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 18px;
   }
   .sn-journal-header-visual {
     width: 100%;
     max-width: 280px;
     height: auto;
-    max-height: 190px;
+    max-height: 185px;
     aspect-ratio: 3/2;
   }
 
+  .sn-newsletter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
   .sn-newsletter-visual {
     width: 100%;
     max-width: 280px;
     height: auto;
-    max-height: 190px;
+    max-height: 185px;
     aspect-ratio: 3/2;
-    margin-bottom: 16px;
   }
 }
 
 @media (max-width: 768px) {
   .sn-component-row {
+    display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 14px;
-    padding-block: 18px;
+    gap: 16px;
+    padding: 16px 0;
+    min-height: auto;
   }
   .sn-component-main {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
@@ -2077,8 +2172,14 @@
   }
   .sn-component-thumb-wrap {
     width: 120px;
+    min-width: 120px;
+    max-width: 120px;
     height: 80px;
+    min-height: 80px;
+    max-height: 80px;
     flex-shrink: 0;
+    justify-self: auto;
   }
 }
+
 

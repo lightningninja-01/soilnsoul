@@ -353,8 +353,8 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
               <Image
                 src="/SnS/before-your-journey.webp"
                 alt="Quiet morning overlooking the sacred riverfront of Kashi"
-                fill
-                sizes="(max-width:700px) 90vw, 35vw"
+                width={290}
+                height={195}
                 className="object-cover"
               />
             </div>

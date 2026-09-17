@@ -171,8 +171,8 @@ export default function JourneyEnquiry({
               <Image
                 src="/SnS/design-my-journey.webp"
                 alt="Designing your personalized journey to Kashi"
-                width={300}
-                height={210}
+                width={270}
+                height={175}
                 className="object-cover"
               />
             </div>

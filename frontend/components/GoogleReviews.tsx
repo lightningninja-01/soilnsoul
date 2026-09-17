@@ -143,8 +143,8 @@ export default function GoogleReviews() {
             <Image
               src="/SnS/through-their-eyes.webp"
               alt="Ghats of Varanasi observed in evening atmosphere"
-              width={280}
-              height={210}
+              width={270}
+              height={190}
               className="object-cover"
             />
           </div>

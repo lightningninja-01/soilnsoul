@@ -52,8 +52,8 @@ export default function SoulJournal({
           <Image
             src="/SnS/journal-kashi-life.webp"
             alt="Everyday life and riverfront moments in Kashi"
-            width={280}
-            height={190}
+            width={270}
+            height={180}
             className="object-cover"
           />
         </div>
@@ -130,8 +130,8 @@ export default function SoulJournal({
           <Image
             src="/SnS/journal-craft-detail.webp"
             alt="Intricate traditional craft detail from Varanasi"
-            width={280}
-            height={190}
+            width={270}
+            height={180}
             className="object-cover"
           />
         </div>

@@ -191,8 +191,8 @@ export function Values() {
             <Image
               src="/SnS/rooted-in-kashi.webp"
               alt="Rooted in Kashi — authentic philosophy of Soil n Soul"
-              width={320}
-              height={210}
+              width={300}
+              height={195}
               className="object-cover"
             />
           </div>
