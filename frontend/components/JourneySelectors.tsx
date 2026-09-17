@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { whatsapp } from "@/data/journeys";
@@ -79,7 +79,7 @@ export default function JourneySelectors({
             )
           }
         >
-          Design My Journey ↗
+          Design My Journey →
         </a>
         <a
           className="sn-text-link"

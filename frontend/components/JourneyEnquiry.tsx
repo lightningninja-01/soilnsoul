@@ -45,7 +45,7 @@ export default function JourneyEnquiry({
             </p>
             <div className="sn-contact-details">
               <a href="tel:+919580417547">+91 95804 17547</a>
-              <a href="mailto:info@soilnsoultravels">info@soilnsoultravels</a>
+              <a href="mailto:info@soilnsoultravels.com">info@soilnsoultravels.com</a>
               <span>Varanasi, Uttar Pradesh, India</span>
             </div>
             <form
@@ -135,7 +135,7 @@ export default function JourneyEnquiry({
                 />
               </label>
               <button className="sn-button" type="submit">
-                Design My Journey ↗
+                Design My Journey →
               </button>
               <p className="sn-form-note">
                 We’ll prepare your enquiry for WhatsApp. You review and send it.

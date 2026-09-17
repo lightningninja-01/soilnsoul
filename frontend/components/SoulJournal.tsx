@@ -44,7 +44,7 @@ export default function SoulJournal({
           </h2>
         </div>
         <Link href="/blog" className="sn-text-link">
-          Read the journal ↗
+          Read the journal →
         </Link>
       </div>
       <div className="sn-categories" aria-label="Journal categories">
@@ -67,7 +67,7 @@ export default function SoulJournal({
                   <Image
                     src={
                       imgErrors[b._id]
-                        ? "/images/hero/hero-3.jpg"
+                        ? "/SnS/soul-journal.png"
                         : journalImage(b.bannerImage)
                     }
                     alt={b.title}
@@ -81,7 +81,7 @@ export default function SoulJournal({
                 <p className="sn-eyebrow">{b.category}</p>
                 <h3>{b.title}</h3>
                 <p>{b.excerpt}</p>
-                <span className="sn-text-link">Read story ↗</span>
+                <span className="sn-text-link">Read story →</span>
               </Link>
             </article>
           ))}
@@ -90,7 +90,7 @@ export default function SoulJournal({
         <div className="sn-journal-empty">
           <div className="sn-journal-image">
             <Image
-              src="/images/hero/hero-3.jpg"
+              src="/SnS/soul-journal.png"
               alt="The riverfront of Banaras"
               fill
               sizes="(max-width:700px) 90vw, 50vw"
@@ -109,7 +109,7 @@ export default function SoulJournal({
                 : "Explore our journal for local perspectives on culture, spirituality, and life in Kashi."}
             </p>
             <Link href="/blog" className="sn-text-link">
-              Explore the journal ↗
+              Explore the journal →
             </Link>
           </div>
         </div>
@@ -123,7 +123,7 @@ export default function SoulJournal({
           onSubmit={(e) => {
             e.preventDefault();
             const email = new FormData(e.currentTarget).get("email");
-            window.location.href = `mailto:info@soilnsoultravels?subject=${encodeURIComponent("The Soul Journal — newsletter request")}&body=${encodeURIComponent(`Please subscribe ${email} to The Soul Journal. I would like to receive cultural stories and updates by email.`)}`;
+            window.location.href = `mailto:info@soilnsoultravels.com?subject=${encodeURIComponent("The Soul Journal — newsletter request")}&body=${encodeURIComponent(`Please subscribe ${email} to The Soul Journal. I would like to receive cultural stories and updates by email.`)}`;
           }}
         >
           <label className="sn-sr-only" htmlFor="newsletter-email">
@@ -138,7 +138,7 @@ export default function SoulJournal({
             required
           />
           <button type="submit" aria-label="Request newsletter signup by email">
-            Sign up ↗
+            Sign up →
           </button>
           <small>Opens your email app to send your subscription request.</small>
         </form>

@@ -5,13 +5,13 @@ import Link from "next/link";
 import {
   Flame,
   Hand,
-  Utensils,
-  Footprints,
+  CookingPot,
+  Compass,
   Sparkles,
   Camera,
 } from "lucide-react";
 import { experiences } from "@/data/journeys";
-const icons = [Flame, Hand, Utensils, Footprints, Sparkles, Camera];
+const icons = [Flame, Hand, CookingPot, Compass, Sparkles, Camera];
 const introductions = [
   "Begin with the river. Follow the rhythms of devotion through dawn rituals, temple trails, and the evening Ganga aarti.",
   "Spend time with the people who give Banaras its character. Discover artisan traditions and everyday life in the old city.",

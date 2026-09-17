@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { Compass } from 'lucide-react';
 
 const SERVICES_LIST = [
   'Verified & Safe Stays',
@@ -77,13 +78,9 @@ const LeadCaptureModal = ({ onClose }: LeadCaptureModalProps) => {
           </button>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e65000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-              <path d="M2 17l10 5 10-5"></path>
-              <path d="M2 12l10 5 10-5"></path>
-            </svg>
+            <Compass size={20} color="#e65000" strokeWidth={1.5} aria-hidden="true" />
             <div>
-              <p style={{ color: '#e65000', fontSize: '10px', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase', margin: 0 }}>Soil N Soul Travel</p>
+              <p style={{ color: '#e65000', fontSize: '10px', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase', margin: 0 }}>Soil N Soul Travels</p>
               <h3 style={{ color: '#fff', fontSize: '18px', fontWeight: 600, margin: '2px 0 0', fontFamily: 'var(--font-playfair), serif' }}>Plan Your Varanasi Journey</h3>
             </div>
           </div>
@@ -91,14 +88,14 @@ const LeadCaptureModal = ({ onClose }: LeadCaptureModalProps) => {
         </div>
 
         <form onSubmit={handleWhatsApp} style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <div style={{ flex: 1 }}>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 180px' }}>
               <label htmlFor="lead-name" style={{ fontSize: '11px', color: '#999', display: 'block', marginBottom: '6px' }}>Your Name *</label>
               <input id="lead-name" name="name" required value={form.name} onChange={handleChange} placeholder="Rahul Sharma"
                 style={{ width: '100%', background: '#242321', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '6px', padding: '10px 14px', color: '#fff', fontSize: '14px', outline: 'none' }} 
               />
             </div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: '1 1 180px' }}>
               <label htmlFor="lead-phone" style={{ fontSize: '11px', color: '#999', display: 'block', marginBottom: '6px' }}>Phone / WhatsApp *</label>
               <input id="lead-phone" name="phone" required value={form.phone} onChange={handleChange} placeholder="+91 9876543210" type="tel"
                 style={{ width: '100%', background: '#242321', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '6px', padding: '10px 14px', color: '#fff', fontSize: '14px', outline: 'none' }} 

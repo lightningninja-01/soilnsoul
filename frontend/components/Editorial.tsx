@@ -170,7 +170,7 @@ export function Founder({ full = false }: { full?: boolean }) {
         ))}
         {!full && (
           <Link href="/about" className="sn-text-link">
-            Meet the heart behind the journeys ↗
+            Meet the heart behind the journeys →
           </Link>
         )}
       </div>

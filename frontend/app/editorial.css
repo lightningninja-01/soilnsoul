@@ -230,6 +230,30 @@
   object-fit: cover;
   object-position: center;
 }
+.sn-hero-video-toggle {
+  position: absolute;
+  bottom: 40px;
+  left: 48px;
+  z-index: 10;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: color 0.2s ease;
+}
+.sn-hero-video-toggle:hover {
+  color: #fff;
+}
+@media (max-width: 700px) {
+  .sn-hero-video-toggle {
+    left: 20px;
+    bottom: 20px;
+  }
+}
 .sn-hero-shade {
   position: absolute;
   inset: 0;
@@ -1251,7 +1275,9 @@
     display: none !important;
   }
   .sn-menu-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
   .sn-nav {
     padding: 17px 6%;

@@ -1,29 +1,30 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const films = [
   {
     title: "Kashi at Dawn",
-    image: "/images/hero/hero-3.jpg",
+    image: "/SnS/kashi-at-dawn.png",
     alt: "Historic ghats reflected in the Ganga",
     caption: "The river holds a thousand beginnings.",
   },
   {
     title: "When the City Glows",
-    image: "/images/hero/hero-1.jpg",
+    image: "/SnS/when-the-city-glows.png",
     alt: "Two saffron-clad men walking past the ghat steps",
     caption: "Everyday moments. Extraordinary stories.",
   },
   {
     title: "The Hands of Banaras",
-    image: "/images/hero/hero-2.jpg",
+    image: "/SnS/the-hands-of-banaras.png",
     alt: "A priest raising the ceremonial flame during Ganga aarti",
     caption: "A city illuminated by devotion and craft.",
   },
   {
     title: "A Deeper Connection",
-    image: "/images/services/service-event.jpg",
+    image: "/SnS/a-deeper-connection.png",
     alt: "Rows of lamps lighting the steps of a ghat",
     caption: "A little light, carried a long way.",
   },
@@ -121,20 +122,60 @@ export default function CinematicCarousel() {
           </h2>
         </div>
         
-        <div style={{ display: 'flex', gap: '15px' }}>
+        <div style={{ display: 'flex', gap: '12px' }}>
           <button 
             aria-label="Previous story" 
             onClick={() => { setPaused(true); move(-1); setTimeout(() => setPaused(false), 4000); }}
-            style={{ width: '44px', height: '44px', borderRadius: '50%', border: '1px solid #d1cbc0', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ 
+              width: '44px', 
+              height: '44px', 
+              borderRadius: '50%', 
+              border: '1px solid rgba(255, 255, 255, 0.25)', 
+              background: 'transparent', 
+              cursor: 'pointer', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              color: '#f5f1e9',
+              transition: 'all 0.25s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = '#e65000';
+              e.currentTarget.style.color = '#e65000';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+              e.currentTarget.style.color = '#f5f1e9';
+            }}
           >
-            ←
+            <ArrowLeft size={16} strokeWidth={1.5} />
           </button>
           <button 
             aria-label="Next story" 
             onClick={() => { setPaused(true); move(1); setTimeout(() => setPaused(false), 4000); }}
-            style={{ width: '44px', height: '44px', borderRadius: '50%', border: '1px solid #d1cbc0', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ 
+              width: '44px', 
+              height: '44px', 
+              borderRadius: '50%', 
+              border: '1px solid rgba(255, 255, 255, 0.25)', 
+              background: 'transparent', 
+              cursor: 'pointer', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              color: '#f5f1e9',
+              transition: 'all 0.25s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = '#e65000';
+              e.currentTarget.style.color = '#e65000';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+              e.currentTarget.style.color = '#f5f1e9';
+            }}
           >
-            →
+            <ArrowRight size={16} strokeWidth={1.5} />
           </button>
         </div>
       </div>

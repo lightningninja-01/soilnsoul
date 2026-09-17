@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { experiences } from "@/data/journeys";
@@ -48,7 +48,7 @@ export default function ExperiencesPage() {
               <p>{e.description}</p>
               <p>{stories[i]}</p>
               <Link href="/#contact" className="sn-text-link">
-                Design My Journey ↗
+                Design My Journey →
               </Link>
             </div>
           </section>
@@ -56,7 +56,7 @@ export default function ExperiencesPage() {
       </div>
       <div className="sn-wrap sn-section">
         <Link className="sn-button" href="/journeys">
-          Explore Personalised Journeys ↗
+          Explore Personalised Journeys →
         </Link>
       </div>
     </div>

@@ -1,11 +1,11 @@
-﻿import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 export const experiences = [
   {
     slug: "sacred-kashi",
     name: "01 Sacred Kashi",
     description: "Dawn rituals, temple trails, Ganga aarti",
-    image: "/images/hero/hero-2.jpg",
+    image: "/SnS/sacred-kashi.png",
     alt: "A priest holding a ceremonial flame at Ganga aarti",
   },
   {
@@ -19,7 +19,7 @@ export const experiences = [
     slug: "taste-of-kashi",
     name: "03 Taste of Kashi",
     description: "Family kitchens, street food, chaat culture",
-    image: "/images/services/service-city-tour.jpg",
+    image: "/SnS/taste-of-kashi.png",
     alt: "Evening aarti ceremonies in Varanasi",
   },
   {
@@ -33,14 +33,14 @@ export const experiences = [
     slug: "celebrations",
     name: "05 Celebrations",
     description: "Weddings, festivals, private events in Kashi",
-    image: "/images/services/service-event.jpg",
+    image: "/SnS/celebrations.jpg",
     alt: "Celebration arrangements from the Soil n Soul collection",
   },
   {
     slug: "kashi-through-your-lens",
     name: "06 Kashi Through Your Lens",
     description: "Photography journeys — golden hour & beyond",
-    image: "/images/hero/hero-2.jpg",
+    image: "/images/varanasi-hero.png",
     alt: "Aarti flames and gathered devotees in Kashi",
   },
 ];
@@ -77,7 +77,7 @@ export const journeys = [
       "5 Days / 4 Nights",
     ],
     groupSizeOptions,
-    image: "/images/hero/hero-3.jpg",
+    image: "/SnS/the-soul-of-kashi.png",
     mood: "A deeper connection",
     description: "Dawn boat · Temple trails · Silk studio · Heritage dining",
     story:
@@ -108,7 +108,7 @@ export const journeys = [
     guests: "Private journey",
     durationOptions: ["1 Day", "2 Days / 1 Night"],
     groupSizeOptions,
-    image: "/images/hero/hero-2.jpg",
+    image: "/SnS/kashi-after-dark.png",
     mood: "When the city glows",
     description: "Evening aarti · Old city lanes · Cultural evenings",
     story:
@@ -134,7 +134,7 @@ export const journeys = [
     guests: "Private journey",
     durationOptions: ["1 Day"],
     groupSizeOptions,
-    image: "/images/hero/hero-1.jpg",
+    image: "/SnS/the-sacred-morning.png",
     mood: "Begin with the river",
     description: "Dawn boat · Sunrise ghat walk · Temple trails",
     story:
@@ -160,7 +160,7 @@ export const journeys = [
     guests: "Private journey",
     durationOptions: ["1 Day"],
     groupSizeOptions,
-    image: "/images/services/service-city-tour.jpg",
+    image: "/SnS/the-banarasi-table.png",
     mood: "A city, tasted slowly",
     description: "Family kitchens · Street food · Chaat culture",
     story:
@@ -187,7 +187,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/services/service-pooja-booking.jpg",
+    image: "/SnS/kashi-vishwanath.png",
     mood: "Sacred Kashi",
     description:
       "A deeply personal introduction to one of Kashi's most important spiritual landmarks.",
@@ -211,7 +211,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/hero/hero-2.jpg",
+    image: "/SnS/dashashwamedh-ghat.jpg",
     mood: "The River's Devotion",
     description:
       "Witness the grand evening ritual from the best vantage points on the river.",
@@ -235,7 +235,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/hero/hero-1.jpg",
+    image: "/SnS/assi-ghat.jpg",
     mood: "Morning Awakening",
     description:
       "Begin your day with Vedic chants, classical music, and the first light on the Ganga.",
@@ -259,7 +259,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/services/service-event.jpg",
+    image: "/SnS/sankat-mochan.jpg",
     mood: "Spiritual Heritage",
     description:
       "Visit the historic temple established by Tulsidas in the serene southern part of the city.",
@@ -283,7 +283,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/hero/hero-3.jpg",
+    image: "/SnS/new-vishwanath-BHU.jpg",
     mood: "Academic & Architectural Grandeur",
     description:
       "Explore the vast campus of Banaras Hindu University and the stunning marble temple at its heart.",
@@ -307,7 +307,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/hero/hero-3.jpg",
+    image: "/SnS/sarnath.webp",
     mood: "Buddhist Heritage",
     description:
       "Step into tranquility where Buddha delivered his first sermon.",
@@ -331,7 +331,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/hero/hero-3.jpg",
+    image: "/SnS/ramnagar-fort.jpg",
     mood: "Royal Legacy",
     description:
       "Cross the Ganga to explore the ancestral home of the Maharaja of Banaras.",
@@ -359,7 +359,7 @@ export const journeys = [
       "4 Days / 3 Nights",
     ],
     groupSizeOptions,
-    image: "/images/hero/hero-1.jpg",
+    image: "/images/NEEDS-NEW-IMAGE-PASS2.jpg",
     mood: "A Twin Spiritual Journey",
     description:
       "Combine the ancient energy of Kashi with the profound heritage of Ayodhya.",
@@ -383,7 +383,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/services/service-city-tour.jpg",
+    image: "/SnS/varanasi-heritage.png",
     mood: "Living History",
     description:
       "Immerse yourself in the centuries-old traditions, crafts, and culture of the old city.",
@@ -407,7 +407,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/hero/hero-3.jpg",
+    image: "/SnS/ganga-boat.png",
     mood: "The River's Rhythm",
     description:
       "The quintessential Varanasi experience—floating on the sacred river as the city unfolds.",
@@ -431,7 +431,7 @@ export const journeys = [
     guests: "Up to 10+ Guests",
     durationOptions,
     groupSizeOptions,
-    image: "/images/services/service-pooja-booking.jpg",
+    image: "/SnS/kashi-temple-circuit.png",
     mood: "Sacred Trails",
     description:
       "A thoughtfully guided journey through the most revered and historic temples of Kashi.",
@@ -455,7 +455,7 @@ export const journeys = [
       "4 Days / 3 Nights",
     ],
     groupSizeOptions,
-    image: "/images/hero/hero-2.jpg",
+    image: "/SnS/varanasi-sarnath.png",
     mood: "Hindu & Buddhist Roots",
     description:
       "Experience the vibrant energy of Kashi alongside the peaceful Buddhist heritage of Sarnath.",

@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 
 const DEMO_REVIEWS = [
   {
@@ -79,15 +80,60 @@ export default function GoogleReviews() {
               Google reviews.
             </p>
           </div>
-          <div className="sn-review-controls">
+          <div className="sn-review-controls" style={{ display: 'flex', gap: '12px' }}>
             <button
               aria-label="Previous guest stories"
               onClick={() => move(-1)}
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                border: '1px solid rgba(0, 0, 0, 0.18)',
+                background: 'transparent',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#242521',
+                transition: 'all 0.25s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#e65000';
+                e.currentTarget.style.color = '#e65000';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.18)';
+                e.currentTarget.style.color = '#242521';
+              }}
             >
-              ←
+              <ArrowLeft size={16} strokeWidth={1.5} />
             </button>
-            <button aria-label="Next guest stories" onClick={() => move(1)}>
-              →
+            <button 
+              aria-label="Next guest stories" 
+              onClick={() => move(1)}
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '50%',
+                border: '1px solid rgba(0, 0, 0, 0.18)',
+                background: 'transparent',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#242521',
+                transition: 'all 0.25s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#e65000';
+                e.currentTarget.style.color = '#e65000';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.18)';
+                e.currentTarget.style.color = '#242521';
+              }}
+            >
+              <ArrowRight size={16} strokeWidth={1.5} />
             </button>
           </div>
         </div>
@@ -109,12 +155,15 @@ export default function GoogleReviews() {
                   <h3>{review.author}</h3>
                   <span>Demo review</span>
                 </div>
-                <span
+                <div
                   className="sn-review-rating"
                   aria-label={`${review.rating} out of 5 stars`}
+                  style={{ display: 'flex', gap: '3px', alignItems: 'center' }}
                 >
-                  {"★".repeat(review.rating)}
-                </span>
+                  {[...Array(review.rating)].map((_, idx) => (
+                    <Star key={idx} size={13} fill="#e65000" stroke="#e65000" strokeWidth={1} />
+                  ))}
+                </div>
               </div>
               <blockquote>"{review.text}"</blockquote>
             </article>

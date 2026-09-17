@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { Sailboat, DoorOpen, Flame, Landmark, Sparkles, HeartHandshake } from "lucide-react";
 import type { BlogPost } from "@/lib/api";
 import LeadCaptureModal from "@/components/LeadCaptureModal";
 import Image from "next/image";
@@ -35,28 +36,36 @@ const rare = [
 ];
 
 const components = [
-  ["Travel", "Car · Bike · Traditional Boat", "travel"],
-  ["Stays", "Budget Homestays · Heritage Havelis · Comfort Hotels", "stay"],
-  [
-    "Rituals",
-    "Ganga Aarti Arrangements · Pind Daan · Kashi Vishwanath Puja",
-    "pooja-booking",
-  ],
-  [
-    "Cultural Experiences",
-    "Sunrise Ghat Walk · Old City Heritage Walk · Temple Circuit Tour · Cultural Evenings",
-    "city-tour",
-  ],
-  [
-    "Celebrations",
-    "Pre-Wedding Photography · Private Spiritual Ceremonies · Special Occasions",
-    "event",
-  ],
-  [
-    "Other Support",
-    "Airport Pickup · Silk Shopping · Verified Stays · Local Mobility",
-    "travel",
-  ],
+  {
+    title: "Travel",
+    desc: "Car · Bike · Traditional Boat",
+    icon: Sailboat
+  },
+  {
+    title: "Stays",
+    desc: "Budget Homestays · Heritage Havelis · Comfort Hotels",
+    icon: DoorOpen
+  },
+  {
+    title: "Rituals",
+    desc: "Ganga Aarti Arrangements · Pind Daan · Kashi Vishwanath Puja",
+    icon: Flame
+  },
+  {
+    title: "Cultural Experiences",
+    desc: "Sunrise Ghat Walk · Old City Heritage Walk · Temple Circuit Tour · Cultural Evenings",
+    icon: Landmark
+  },
+  {
+    title: "Celebrations",
+    desc: "Pre-Wedding Photography · Private Spiritual Ceremonies · Special Occasions",
+    icon: Sparkles
+  },
+  {
+    title: "Other Support",
+    desc: "Airport Pickup · Silk Shopping · Verified Stays · Local Mobility",
+    icon: HeartHandshake
+  }
 ];
 
 const faqs = [
@@ -174,7 +183,7 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
           </p>
           <div className="sn-rare-image">
             <Image
-              src="/images/hero/hero-1.jpg"
+              src="/SnS/rare-access.png"
               alt="Everyday life beside the ghats of Banaras"
               fill
               sizes="(max-width:700px) 90vw, 35vw"
@@ -202,7 +211,7 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
           <div style={{ textAlign: "center", marginTop: "80px" }}>
              <p style={{ marginBottom: "20px", color: "#6a665c", fontSize: "14px" }}>Can't find exactly what you're looking for?</p>
              <a href="https://wa.me/919580417547?text=Hello%20Soil%20N%20Soul,%20I%20would%20like%20a%20custom%20quote." target="_blank" rel="noreferrer" className="sn-button" style={{ display: "inline-flex" }}>
-               GET A CUSTOM QUOTE
+               Get a Custom Quote
              </a>
           </div>
         </div>
@@ -213,17 +222,25 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
           title="The details make it yours."
           text="Thoughtful ingredients, brought together into one seamless journey. Choose what you need; we’ll connect the rest."
         />
-        <div className="sn-components">
-          {components.map(([n, d, h], i) => (
-            <Link href={`/services/${h}`} key={n}>
-              <span className="sn-eyebrow">0{i + 1}</span>
-              <h3>
-                {n}
-                <span>↗</span>
-              </h3>
-              <p>{d}</p>
-            </Link>
-          ))}
+        <div className="mt-12 md:mt-20 flex flex-col border-t border-black/10">
+          {components.map((c, i) => {
+            const Icon = c.icon;
+            return (
+              <div 
+                key={c.title}
+                className="flex flex-col md:flex-row md:items-center justify-between py-6 md:py-10 border-b border-black/10"
+              >
+                <div className="flex items-center gap-6 md:gap-12 md:w-5/12 mb-4 md:mb-0">
+                  <span className="text-[#e65000] font-bold tracking-[0.2em] text-sm opacity-80">0{i + 1}</span>
+                  <div className="flex items-center gap-5">
+                    <Icon className="w-5 h-5 md:w-6 md:h-6 opacity-70 text-[#e65000]" strokeWidth={1.5} />
+                    <h3 className="text-xl md:text-3xl font-semibold opacity-90 m-0" style={{ margin: 0 }}>{c.title}</h3>
+                  </div>
+                </div>
+                <p className="opacity-60 md:w-7/12 text-sm md:text-base leading-relaxed m-0" style={{ margin: 0 }}>{c.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
       <Values />
@@ -253,7 +270,7 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
             </h2>
             <p>Something else on your mind?</p>
             <Link className="sn-text-link" href="#contact">
-              Design My Journey ↗
+              Design My Journey →
             </Link>
           </div>
           <div>

@@ -23,7 +23,7 @@ export default function ContactPage() {
       "@type": "TravelAgency",
       name: "Soil n Soul Travels",
       telephone: "+919580417547",
-      email: "info@soilnsoultravels",
+      email: "info@soilnsoultravels.com",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Assi Ghat Road",

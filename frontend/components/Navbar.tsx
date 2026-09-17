@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { Menu, X, ArrowRight } from "lucide-react";
 const navigation = [
   ["Explore Kashi", "/"],
   ["Experiences", "/experiences"],
@@ -58,9 +59,20 @@ export default function Navbar() {
         className="sn-menu-toggle"
         aria-expanded={open}
         aria-controls="mobile-navigation"
+        aria-label={open ? "Close navigation menu" : "Open navigation menu"}
         onClick={() => setOpen(!open)}
       >
-        {open ? "Close ×" : "Menu ☰"}
+        {open ? (
+          <>
+            <span>Close</span>
+            <X size={16} strokeWidth={1.5} />
+          </>
+        ) : (
+          <>
+            <span>Menu</span>
+            <Menu size={16} strokeWidth={1.5} />
+          </>
+        )}
       </button>
       {open && (
         <nav
@@ -69,9 +81,9 @@ export default function Navbar() {
           aria-label="Mobile navigation"
         >
           {navigation.map(([n, h]) => (
-            <Link key={h} href={h} onClick={() => setOpen(false)}>
-              {n}
-              <span>↗</span>
+            <Link key={h} href={h} onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span>{n}</span>
+              <ArrowRight size={14} strokeWidth={1.5} style={{ opacity: 0.6 }} />
             </Link>
           ))}
           <Link
@@ -79,7 +91,7 @@ export default function Navbar() {
             className="sn-button"
             onClick={() => setOpen(false)}
           >
-            Design My Journey
+            Design My Journey →
           </Link>
         </nav>
       )}

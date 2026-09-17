@@ -49,7 +49,7 @@ export default function Footer() {
         <div>
           <p className="sn-eyebrow">Let’s begin a conversation</p>
           <a href="tel:+919580417547">+91 95804 17547</a>
-          <a href="mailto:info@soilnsoultravels">info@soilnsoultravels</a>
+          <a href="mailto:info@soilnsoultravels.com">info@soilnsoultravels.com</a>
           <p>Varanasi, Uttar Pradesh, India</p>
           <a
             href="https://www.instagram.com/soilnsoultravels"

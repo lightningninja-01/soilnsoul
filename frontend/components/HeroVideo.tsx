@@ -33,23 +33,7 @@ export default function HeroVideo() {
       <button 
         onClick={togglePlay}
         aria-label={playing ? "Pause film" : "Play film"}
-        style={{
-          position: 'absolute',
-          bottom: '40px',
-          left: '48px',
-          zIndex: 10,
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          color: 'rgba(255,255,255,0.7)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '8px',
-          transition: 'color 0.2s ease',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
-        onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
+        className="sn-hero-video-toggle"
       >
         {playing ? (
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
