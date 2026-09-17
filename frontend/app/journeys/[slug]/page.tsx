@@ -63,6 +63,18 @@ export default async function JourneyPage({
           <h2>{j.mood}.</h2>
           <p>{j.story}</p>
           
+          {j.supportingImage && (
+            <div className="sn-detail-supporting-image">
+              <Image
+                src={j.supportingImage}
+                alt={j.supportingAlt || `Visual glimpse of ${j.name}`}
+                fill
+                sizes="(max-width:700px) 90vw, 45vw"
+                className="object-cover"
+              />
+            </div>
+          )}
+          
           {j.highlights && (
             <>
               <p className="sn-eyebrow" style={{ marginTop: 45 }}>Journey Highlights</p>

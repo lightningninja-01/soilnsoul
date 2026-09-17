@@ -47,6 +47,17 @@ export default function ExperiencesPage() {
               <h2>{e.name.replace(/^\d+\s/, "")}</h2>
               <p>{e.description}</p>
               <p>{stories[i]}</p>
+              {e.supportingImage && (
+                <div className="sn-experience-supporting-image">
+                  <Image
+                    src={e.supportingImage}
+                    alt={e.supportingAlt || e.name}
+                    fill
+                    sizes="(max-width:700px) 90vw, 40vw"
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <Link href="/#contact" className="sn-text-link">
                 Design My Journey →
               </Link>

@@ -327,8 +327,11 @@
   cursor: default;
 }
 .sn-rare {
-  grid-template-columns: 0.9fr 1.2fr;
-  gap: 70px;
+  display: block;
+}
+.sn-rare-intro {
+  max-width: 660px;
+  margin-bottom: 50px;
 }
 .sn-rare-intro h2 {
   font-size: 44px;
@@ -337,24 +340,22 @@
   display: none;
 }
 .sn-rare-grid {
-  gap: 0 32px;
+  gap: 55px 40px;
 }
 .sn-rare-grid article {
-  padding: 22px 0;
+  padding-top: 24px;
 }
 .sn-rare-grid h3 {
   font-size: 23px;
 }
 .sn-rare-grid .sn-eyebrow {
-  font-size: 10px !important;
-  color: #888;
-  margin-bottom: 9px;
+  font-size: 11px !important;
+  color: #e65000;
+  margin-bottom: 8px;
+  display: block;
 }
 .sn-rare-grid p {
-  font-size: 13px;
-}
-.sn-rare-image {
-  height: 260px;
+  font-size: 14px;
 }
 .sn-journey-section,
 .sn-faq,
@@ -737,23 +738,16 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .sn-rare {
-    grid-template-columns: 1fr;
+    display: block;
   }
   .sn-rare-intro {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 30px;
+    display: block;
+    max-width: 100%;
+    margin-bottom: 40px;
   }
-  .sn-rare-intro .sn-eyebrow,
-  .sn-rare-intro h2,
-  .sn-rare-intro > p {
-    grid-column: 1;
-  }
-  .sn-rare-image {
-    grid-column: 2;
-    grid-row: 1/4;
-    height: 100%;
-    margin: 0;
+  .sn-rare-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 28px;
   }
   .sn-contact-grid {
     gap: 35px;
@@ -912,23 +906,21 @@
   }
   .sn-rare-intro {
     display: block;
+    margin-bottom: 30px;
   }
   .sn-rare-intro h2 {
-    font-size: 33px;
-  }
-  .sn-rare-image {
-    height: 250px;
-    margin-top: 25px;
+    font-size: 32px;
   }
   .sn-rare-grid {
-    gap: 0 24px;
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
   .sn-rare-grid h3 {
-    font-size: 22px;
+    font-size: 21px;
     overflow-wrap: anywhere;
   }
   .sn-rare-grid article {
-    padding-block: 20px;
+    padding-top: 20px;
   }
   .sn-browse-heading {
     gap: 15px;

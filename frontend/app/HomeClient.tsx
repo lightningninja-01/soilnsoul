@@ -19,20 +19,62 @@ import ExperienceSelector from "@/components/ExperienceSelector";
 import HeroVideo from "@/components/HeroVideo";
 
 const rare = [
-  [
-    "Private Cultural Performances",
-    "Thumri, Dhrupad & classical arts in intimate settings",
-  ],
-  ["Local Storytellers", "Living historians who carry Kashi’s oral tradition"],
-  ["Heritage Homes", "Private havelis rarely opened to visitors"],
-  ["Traditional Craftsmen", "Brasswork, zardozi and Banarasi brocade"],
-  ["Private Artisan Visits", "Master weavers & craftsmen, by appointment only"],
-  ["Family-run Kitchens", "Recipes unchanged across five generations"],
-  ["Hidden Temples", "Unmarked shrines beyond every guidebook"],
-  [
-    "Private Ganga Experiences",
-    "Exclusive dawn boat, solo ghat rituals, private aarti",
-  ],
+  {
+    number: "01",
+    title: "Private Cultural Performances",
+    desc: "Thumri, Dhrupad & classical arts in intimate settings",
+    image: "/SnS/private-cultural-performance.webp",
+    alt: "Intimate classical music performance in a heritage home in Kashi",
+  },
+  {
+    number: "02",
+    title: "Local Storytellers",
+    desc: "Living historians who carry Kashi’s oral tradition",
+    image: "/SnS/local-storyteller.webp",
+    alt: "Local Banarasi storyteller sharing stories in an old Kashi setting",
+  },
+  {
+    number: "03",
+    title: "Heritage Homes",
+    desc: "Private havelis rarely opened to visitors",
+    image: "/SnS/rare-access-heritage-home.webp",
+    alt: "Historic Banarasi heritage haveli courtyard",
+  },
+  {
+    number: "04",
+    title: "Traditional Craftsmen",
+    desc: "Brasswork, zardozi and Banarasi brocade",
+    image: "/SnS/brass-craftsman.webp",
+    alt: "Banarasi craftsman working with traditional brassware",
+  },
+  {
+    number: "05",
+    title: "Private Artisan Visits",
+    desc: "Master weavers & craftsmen, by appointment only",
+    image: "/SnS/private-artisan-visit.webp",
+    alt: "Master Banarasi weaver demonstrating traditional handloom craft",
+  },
+  {
+    number: "06",
+    title: "Family-run Kitchens",
+    desc: "Recipes unchanged across five generations",
+    image: "/SnS/family-run-kitchen.webp",
+    alt: "Traditional family kitchen preparing food in Kashi",
+  },
+  {
+    number: "07",
+    title: "Hidden Temples",
+    desc: "Unmarked shrines beyond every guidebook",
+    image: "/SnS/rare-access-hidden-temple.webp",
+    alt: "Small hidden shrine tucked inside an old Kashi lane",
+  },
+  {
+    number: "08",
+    title: "Private Ganga Experiences",
+    desc: "Exclusive dawn boat, solo ghat rituals, private aarti",
+    image: "/SnS/private-ganga-experience.webp",
+    alt: "Traditional wooden boat experience on the Ganges in Kashi",
+  },
 ];
 
 const components = [
@@ -181,21 +223,22 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
             Go beyond the familiar. Meet the people, enter the spaces, and hear
             the stories that bring the real Banaras closer.
           </p>
-          <div className="sn-rare-image">
-            <Image
-              src="/SnS/rare-access.png"
-              alt="Everyday life beside the ghats of Banaras"
-              fill
-              sizes="(max-width:700px) 90vw, 35vw"
-            />
-          </div>
         </div>
         <div className="sn-rare-grid">
-          {rare.map(([n, d], i) => (
-            <article key={n}>
-              <span className="sn-eyebrow">0{i + 1}</span>
-              <h3>{n}</h3>
-              <p>{d}</p>
+          {rare.map((item) => (
+            <article key={item.title}>
+              <div className="sn-rare-item-image">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              <span className="sn-eyebrow">{item.number}</span>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
             </article>
           ))}
         </div>
@@ -272,6 +315,15 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
             <Link className="sn-text-link" href="#contact">
               Design My Journey →
             </Link>
+            <div className="sn-faq-image">
+              <Image
+                src="/SnS/before-your-journey.webp"
+                alt="Quiet morning overlooking the sacred riverfront of Kashi"
+                fill
+                sizes="(max-width:700px) 90vw, 35vw"
+                className="object-cover"
+              />
+            </div>
           </div>
           <div>
             {faqs.map(([q, a]) => (

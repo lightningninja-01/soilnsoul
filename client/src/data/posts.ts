@@ -51,7 +51,7 @@ export const posts = [
     author: 'Rahul Verma',
     date: 'August 10, 2025',
     category: 'Food & Culture',
-    image: 'https://picsum.photos/seed/food/800/600',
+    image: '/SnS/malaiyo-kashi.webp',
     readTime: '6 min read'
   },
   {

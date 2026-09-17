@@ -6,25 +6,25 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 const films = [
   {
     title: "Kashi at Dawn",
-    image: "/SnS/kashi-at-dawn.png",
+    image: "/SnS/kashi-at-dawn.webp",
     alt: "Historic ghats reflected in the Ganga",
     caption: "The river holds a thousand beginnings.",
   },
   {
     title: "When the City Glows",
-    image: "/SnS/when-the-city-glows.png",
+    image: "/SnS/when-the-city-glows.webp",
     alt: "Two saffron-clad men walking past the ghat steps",
     caption: "Everyday moments. Extraordinary stories.",
   },
   {
     title: "The Hands of Banaras",
-    image: "/SnS/the-hands-of-banaras.png",
+    image: "/SnS/the-hands-of-banaras.webp",
     alt: "A priest raising the ceremonial flame during Ganga aarti",
     caption: "A city illuminated by devotion and craft.",
   },
   {
     title: "A Deeper Connection",
-    image: "/SnS/a-deeper-connection.png",
+    image: "/SnS/a-deeper-connection.webp",
     alt: "Rows of lamps lighting the steps of a ghat",
     caption: "A little light, carried a long way.",
   },

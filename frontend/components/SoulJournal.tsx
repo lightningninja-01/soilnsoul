@@ -67,7 +67,7 @@ export default function SoulJournal({
                   <Image
                     src={
                       imgErrors[b._id]
-                        ? "/SnS/soul-journal.png"
+                        ? "/SnS/soul-journal.webp"
                         : journalImage(b.bannerImage)
                     }
                     alt={b.title}
@@ -90,7 +90,7 @@ export default function SoulJournal({
         <div className="sn-journal-empty">
           <div className="sn-journal-image">
             <Image
-              src="/SnS/soul-journal.png"
+              src="/SnS/soul-journal.webp"
               alt="The riverfront of Banaras"
               fill
               sizes="(max-width:700px) 90vw, 50vw"

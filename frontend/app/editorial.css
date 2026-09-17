@@ -498,42 +498,51 @@
   color: #c6c3ba;
 }
 .sn-rare {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 90px;
+  display: block;
+}
+.sn-rare-intro {
+  max-width: 660px;
+  margin-bottom: 55px;
 }
 .sn-rare-intro > p:not(.sn-eyebrow) {
   color: #68675f;
-  font-size: 14px;
-  margin: 25px 0;
-}
-.sn-rare-image {
-  position: relative;
-  height: 240px;
-  margin-top: 35px;
-}
-.sn-rare-image img {
-  object-fit: cover;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 20px;
 }
 .sn-rare-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 35px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 55px 40px;
 }
 .sn-rare-grid article {
   border-top: 1px solid #ccc7bc;
-  padding: 24px 0;
+  padding-top: 24px;
+}
+.sn-rare-item-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.sn-rare-item-image img {
+  object-fit: cover;
 }
 .sn-rare-grid h3 {
   font-size: 24px;
+  margin: 6px 0 10px;
 }
 .sn-rare-grid p:not(.sn-eyebrow) {
-  font-size: 13px;
+  font-size: 14px;
   color: #68675f;
-  margin-top: 13px;
+  line-height: 1.5;
+  margin: 0;
 }
 .sn-rare-grid .sn-eyebrow {
-  margin-bottom: 14px;
+  margin-bottom: 8px;
+  display: block;
 }
 .sn-journey-section {
   background: #eae5db;
@@ -1685,3 +1694,47 @@
   .sn-rare-grid h3 { font-size: 19px; }
 }
 .sn-logo-img { width: auto; height: 45px; max-width: 100%; } @media (max-width: 768px) { .sn-nav .sn-logo-img { height: 35px; } } .sn-footer .sn-logo-img { height: 35px; }
+
+/* PASS 7 Approved Visual Support Styles */
+.sn-faq-image {
+  position: relative;
+  height: 280px;
+  margin-top: 30px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.sn-faq-image img {
+  object-fit: cover;
+}
+.sn-detail-supporting-image {
+  position: relative;
+  height: 260px;
+  margin: 30px 0 35px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.sn-detail-supporting-image img {
+  object-fit: cover;
+}
+.sn-experience-supporting-image {
+  position: relative;
+  height: 200px;
+  margin: 20px 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.sn-experience-supporting-image img {
+  object-fit: cover;
+}
+@media (max-width: 700px) {
+  .sn-faq-image {
+    height: 220px;
+    margin-top: 24px;
+  }
+  .sn-detail-supporting-image {
+    height: 200px;
+  }
+  .sn-experience-supporting-image {
+    height: 180px;
+  }
+}
