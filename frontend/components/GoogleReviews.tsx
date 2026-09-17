@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 
 const DEMO_REVIEWS = [
@@ -137,37 +138,48 @@ export default function GoogleReviews() {
             </button>
           </div>
         </div>
-        <div
-          ref={rail}
-          className="sn-review-rail"
-          tabIndex={0}
-          aria-label="Demo guest stories"
-          onPointerDown={interact}
-          onScrollCapture={interact}
-        >
-          {DEMO_REVIEWS.map((review) => (
-            <article key={review.author} className="sn-review">
-              <div className="sn-review-person">
-                <span className="sn-avatar" aria-hidden="true">
-                  {review.author.charAt(0)}
-                </span>
-                <div>
-                  <h3>{review.author}</h3>
-                  <span>Demo review</span>
+        <div className="sn-reviews-container">
+          <div className="sn-review-editorial-image">
+            <Image
+              src="/SnS/through-their-eyes.webp"
+              alt="Ghats of Varanasi observed in evening atmosphere"
+              width={280}
+              height={210}
+              className="object-cover"
+            />
+          </div>
+          <div
+            ref={rail}
+            className="sn-review-rail"
+            tabIndex={0}
+            aria-label="Demo guest stories"
+            onPointerDown={interact}
+            onScrollCapture={interact}
+          >
+            {DEMO_REVIEWS.map((review) => (
+              <article key={review.author} className="sn-review">
+                <div className="sn-review-person">
+                  <span className="sn-avatar" aria-hidden="true">
+                    {review.author.charAt(0)}
+                  </span>
+                  <div>
+                    <h3>{review.author}</h3>
+                    <span>Demo review</span>
+                  </div>
+                  <div
+                    className="sn-review-rating"
+                    aria-label={`${review.rating} out of 5 stars`}
+                    style={{ display: 'flex', gap: '3px', alignItems: 'center' }}
+                  >
+                    {[...Array(review.rating)].map((_, idx) => (
+                      <Star key={idx} size={13} fill="#e65000" stroke="#e65000" strokeWidth={1} />
+                    ))}
+                  </div>
                 </div>
-                <div
-                  className="sn-review-rating"
-                  aria-label={`${review.rating} out of 5 stars`}
-                  style={{ display: 'flex', gap: '3px', alignItems: 'center' }}
-                >
-                  {[...Array(review.rating)].map((_, idx) => (
-                    <Star key={idx} size={13} fill="#e65000" stroke="#e65000" strokeWidth={1} />
-                  ))}
-                </div>
-              </div>
-              <blockquote>"{review.text}"</blockquote>
-            </article>
-          ))}
+                <blockquote>"{review.text}"</blockquote>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

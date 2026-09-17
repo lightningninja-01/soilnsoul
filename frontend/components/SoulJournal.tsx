@@ -34,18 +34,29 @@ export default function SoulJournal({
     .slice(0, listing ? undefined : 3);
   return (
     <section id="blog" className="sn-section sn-wrap sn-journal">
-      <div className="sn-section-heading">
-        <div>
-          <p className="sn-eyebrow">The Soul Journal</p>
-          <h2>
-            Stories from the
-            <br />
-            <em>Heart of India.</em>
-          </h2>
+      <div className="sn-journal-header-split">
+        <div className="sn-section-heading">
+          <div>
+            <p className="sn-eyebrow">The Soul Journal</p>
+            <h2>
+              Stories from the
+              <br />
+              <em>Heart of India.</em>
+            </h2>
+          </div>
+          <Link href="/blog" className="sn-text-link">
+            Read the journal →
+          </Link>
         </div>
-        <Link href="/blog" className="sn-text-link">
-          Read the journal →
-        </Link>
+        <div className="sn-journal-header-visual">
+          <Image
+            src="/SnS/journal-kashi-life.webp"
+            alt="Everyday life and riverfront moments in Kashi"
+            width={280}
+            height={190}
+            className="object-cover"
+          />
+        </div>
       </div>
       <div className="sn-categories" aria-label="Journal categories">
         {categories.map((c) => (
@@ -115,7 +126,16 @@ export default function SoulJournal({
         </div>
       )}
       <div className="sn-newsletter">
-        <div>
+        <div className="sn-newsletter-visual">
+          <Image
+            src="/SnS/journal-craft-detail.webp"
+            alt="Intricate traditional craft detail from Varanasi"
+            width={280}
+            height={190}
+            className="object-cover"
+          />
+        </div>
+        <div className="sn-newsletter-copy">
           <h3>A little Kashi, in your inbox.</h3>
           <p>Request The Soul Journal newsletter by email.</p>
         </div>

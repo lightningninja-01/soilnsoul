@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { whatsapp } from "@/data/journeys";
 export default function JourneyEnquiry({
   journey = "",
@@ -165,23 +166,34 @@ export default function JourneyEnquiry({
               Enquire on WhatsApp ↗
             </a>
           </div>
-          <div className="sn-map">
-            <iframe
-              title="Map of Varanasi, Uttar Pradesh, India"
-              src="https://maps.google.com/maps?q=Varanasi%2C%20Uttar%20Pradesh%2C%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-            <div>
-              <p className="sn-eyebrow">Our home. Your beginning.</p>
-              <h3>Varanasi, India</h3>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Varanasi%2C+Uttar+Pradesh%2C+India"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Explore the map ↗
-              </a>
+          <div className="sn-contact-aside">
+            <div className="sn-enquiry-editorial-image">
+              <Image
+                src="/SnS/design-my-journey.webp"
+                alt="Designing your personalized journey to Kashi"
+                width={300}
+                height={210}
+                className="object-cover"
+              />
+            </div>
+            <div className="sn-map">
+              <iframe
+                title="Map of Varanasi, Uttar Pradesh, India"
+                src="https://maps.google.com/maps?q=Varanasi%2C%20Uttar%20Pradesh%2C%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div>
+                <p className="sn-eyebrow">Our home. Your beginning.</p>
+                <h3>Varanasi, India</h3>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Varanasi%2C+Uttar+Pradesh%2C+India"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Explore the map ↗
+                </a>
+              </div>
             </div>
           </div>
         </div>

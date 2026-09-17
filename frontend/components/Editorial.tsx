@@ -181,11 +181,22 @@ export function Values() {
   return (
     <section id="about" className="sn-section sn-way">
       <div className="sn-wrap">
-        <SectionHeading
-          label="The Soil n Soul Way"
-          title="Rooted here. Thoughtfully shared."
-          text="Our connection to Kashi shapes every choice we make — and every journey we create."
-        />
+        <div className="sn-way-header-split">
+          <SectionHeading
+            label="The Soil n Soul Way"
+            title="Rooted here. Thoughtfully shared."
+            text="Our connection to Kashi shapes every choice we make — and every journey we create."
+          />
+          <div className="sn-way-image">
+            <Image
+              src="/SnS/rooted-in-kashi.webp"
+              alt="Rooted in Kashi — authentic philosophy of Soil n Soul"
+              width={320}
+              height={210}
+              className="object-cover"
+            />
+          </div>
+        </div>
         <div className="sn-values">
           {values.map(([name, text], i) => (
             <article key={name}>

@@ -81,32 +81,44 @@ const components = [
   {
     title: "Travel",
     desc: "Car · Bike · Traditional Boat",
-    icon: Sailboat
+    icon: Sailboat,
+    image: "/SnS/private-journey-travel.webp",
+    alt: "Traditional boat and travel in Varanasi",
   },
   {
     title: "Stays",
     desc: "Budget Homestays · Heritage Havelis · Comfort Hotels",
-    icon: DoorOpen
+    icon: DoorOpen,
+    image: "/SnS/private-journey-stays.webp",
+    alt: "Heritage haveli stay in Varanasi",
   },
   {
     title: "Rituals",
     desc: "Ganga Aarti Arrangements · Pind Daan · Kashi Vishwanath Puja",
-    icon: Flame
+    icon: Flame,
+    image: "/SnS/private-journey-rituals.webp",
+    alt: "Sacred rituals and Ganga Aarti in Kashi",
   },
   {
     title: "Cultural Experiences",
     desc: "Sunrise Ghat Walk · Old City Heritage Walk · Temple Circuit Tour · Cultural Evenings",
-    icon: Landmark
+    icon: Landmark,
+    image: "/SnS/private-journey-cultural-experiences.webp",
+    alt: "Cultural experiences and heritage walks in Kashi",
   },
   {
     title: "Celebrations",
     desc: "Pre-Wedding Photography · Private Spiritual Ceremonies · Special Occasions",
-    icon: Sparkles
+    icon: Sparkles,
+    image: "/SnS/private-journey-celebrations.webp",
+    alt: "Spiritual celebrations and photography in Varanasi",
   },
   {
     title: "Other Support",
     desc: "Airport Pickup · Silk Shopping · Verified Stays · Local Mobility",
-    icon: HeartHandshake
+    icon: HeartHandshake,
+    image: "/SnS/private-journey-other-support.webp",
+    alt: "Local support and hospitality in Varanasi",
   }
 ];
 
@@ -260,27 +272,49 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
         </div>
       </section>
       <section id="services" className="sn-section sn-wrap">
-        <SectionHeading
-          label="Private Journey Components"
-          title="The details make it yours."
-          text="Thoughtful ingredients, brought together into one seamless journey. Choose what you need; we’ll connect the rest."
-        />
-        <div className="mt-12 md:mt-20 flex flex-col border-t border-black/10">
+        <div className="sn-components-header-split">
+          <SectionHeading
+            label="Private Journey Components"
+            title="The details make it yours."
+            text="Thoughtful ingredients, brought together into one seamless journey. Choose what you need; we’ll connect the rest."
+          />
+          <div className="sn-components-intro-image">
+            <Image
+              src="/SnS/journey-components-kashi.webp"
+              alt="Curated details of personalized Kashi journeys"
+              width={320}
+              height={210}
+              className="object-cover"
+            />
+          </div>
+        </div>
+        <div className="sn-components-list">
           {components.map((c, i) => {
             const Icon = c.icon;
             return (
               <div 
                 key={c.title}
-                className="flex flex-col md:flex-row md:items-center justify-between py-6 md:py-10 border-b border-black/10"
+                className="sn-component-row group"
               >
-                <div className="flex items-center gap-6 md:gap-12 md:w-5/12 mb-4 md:mb-0">
-                  <span className="text-[#e65000] font-bold tracking-[0.2em] text-sm opacity-80">0{i + 1}</span>
-                  <div className="flex items-center gap-5">
-                    <Icon className="w-5 h-5 md:w-6 md:h-6 opacity-70 text-[#e65000]" strokeWidth={1.5} />
-                    <h3 className="text-xl md:text-3xl font-semibold opacity-90 m-0" style={{ margin: 0 }}>{c.title}</h3>
+                <div className="sn-component-main">
+                  <div className="sn-component-lead">
+                    <span className="sn-component-number">0{i + 1}</span>
+                    <div className="sn-component-title-wrap">
+                      <Icon className="sn-component-icon" strokeWidth={1.5} />
+                      <h3 className="sn-component-title">{c.title}</h3>
+                    </div>
                   </div>
+                  <p className="sn-component-desc">{c.desc}</p>
                 </div>
-                <p className="opacity-60 md:w-7/12 text-sm md:text-base leading-relaxed m-0" style={{ margin: 0 }}>{c.desc}</p>
+                <div className="sn-component-thumb-wrap">
+                  <Image
+                    src={c.image}
+                    alt={c.alt}
+                    width={170}
+                    height={110}
+                    className="object-cover"
+                  />
+                </div>
               </div>
             );
           })}
