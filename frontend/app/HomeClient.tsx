@@ -296,14 +296,12 @@ export default function HomeClient({ blogs }: { blogs: BlogPost[] }) {
                 key={c.title}
                 className="sn-component-row group"
               >
-                <div className="sn-component-main">
-                  <div className="sn-component-lead">
-                    <span className="sn-component-number">0{i + 1}</span>
-                    <div className="sn-component-title-wrap">
-                      <Icon className="sn-component-icon" strokeWidth={1.5} />
-                      <h3 className="sn-component-title">{c.title}</h3>
-                    </div>
-                  </div>
+                <div className="sn-component-meta">
+                  <span className="sn-component-number">0{i + 1}</span>
+                  <Icon className="sn-component-icon" strokeWidth={1.5} />
+                </div>
+                <div className="sn-component-body">
+                  <h3 className="sn-component-title">{c.title}</h3>
                   <p className="sn-component-desc">{c.desc}</p>
                 </div>
                 <div className="sn-component-thumb-wrap">

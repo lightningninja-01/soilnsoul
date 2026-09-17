@@ -1768,53 +1768,52 @@
   margin-top: 36px;
 }
 .sn-component-row {
-  display: grid;
-  grid-template-columns: 280px 1fr 170px;
-  align-items: center;
-  gap: 32px;
-  padding: 22px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  min-height: 126px;
-}
-.sn-component-main {
-  display: contents;
-}
-.sn-component-lead {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.sn-component-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  width: 72px;
 }
 .sn-component-number {
   color: #e65000;
   font-weight: 700;
-  letter-spacing: 0.2em;
-  font-size: 14px;
-  opacity: 0.85;
-}
-.sn-component-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  font-size: 15px;
+  letter-spacing: 0.04em;
 }
 .sn-component-icon {
   width: 22px;
   height: 22px;
   color: #e65000;
-  opacity: 0.75;
   flex-shrink: 0;
 }
+.sn-component-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 .sn-component-title {
-  font-size: 24px;
-  font-weight: 600;
+  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-size: 26px;
+  font-weight: 400;
+  color: #242521;
+  line-height: 1.22;
   margin: 0;
-  line-height: 1.2;
 }
 .sn-component-desc {
-  font-size: 14px;
+  font-size: 13.5px;
   color: #68675f;
   line-height: 1.5;
   margin: 0;
-  padding-right: 16px;
 }
 .sn-component-thumb-wrap {
   width: 170px;
@@ -1825,17 +1824,18 @@
   max-height: 110px;
   position: relative;
   overflow: hidden;
-  border-radius: 2px;
-  justify-self: end;
+  border-radius: 4px;
+  flex-shrink: 0;
 }
 .sn-component-thumb-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.35s ease;
 }
 .sn-component-row:hover .sn-component-thumb-wrap img {
-  transform: scale(1.025);
+  transform: scale(1.03);
 }
 
 /* 2. The Soil N Soul Way (Values) */
@@ -2021,11 +2021,14 @@
 /* Responsive Rules & Mobile Constraints */
 @media (max-width: 1024px) {
   .sn-component-row {
-    grid-template-columns: 240px 1fr 170px;
     gap: 20px;
   }
+  .sn-component-meta {
+    gap: 12px;
+    width: 68px;
+  }
   .sn-component-title {
-    font-size: 20px;
+    font-size: 22px;
   }
   .sn-contact-grid {
     gap: 40px;
@@ -2144,31 +2147,41 @@
 @media (max-width: 768px) {
   .sn-component-row {
     display: flex;
-    flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 16px;
-    padding: 16px 0;
+    gap: 14px;
+    padding: 18px 0;
     min-height: auto;
   }
-  .sn-component-main {
+  .sn-component-meta {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
+    width: 54px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .sn-component-number {
+    font-size: 15px;
+  }
+  .sn-component-icon {
+    width: 18px;
+    height: 18px;
+  }
+  .sn-component-body {
     flex: 1;
     min-width: 0;
-  }
-  .sn-component-lead {
-    width: 100%;
-    gap: 10px;
+    gap: 4px;
   }
   .sn-component-title {
-    font-size: 17px;
+    font-size: 19px;
+    line-height: 1.25;
   }
   .sn-component-desc {
-    font-size: 13px;
-    padding-right: 0;
+    font-size: 12px;
+    line-height: 1.45;
+    color: #68675f;
+    margin: 0;
   }
   .sn-component-thumb-wrap {
     width: 120px;
@@ -2177,8 +2190,42 @@
     height: 80px;
     min-height: 80px;
     max-height: 80px;
+    border-radius: 3px;
     flex-shrink: 0;
-    justify-self: auto;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 390px) {
+  .sn-component-row {
+    gap: 10px;
+    padding: 16px 0;
+  }
+  .sn-component-meta {
+    width: 48px;
+    gap: 6px;
+  }
+  .sn-component-number {
+    font-size: 14px;
+  }
+  .sn-component-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .sn-component-title {
+    font-size: 17.5px;
+  }
+  .sn-component-desc {
+    font-size: 11px;
+  }
+  .sn-component-thumb-wrap {
+    width: 110px;
+    min-width: 110px;
+    max-width: 110px;
+    height: 75px;
+    min-height: 75px;
+    max-height: 75px;
   }
 }
 
